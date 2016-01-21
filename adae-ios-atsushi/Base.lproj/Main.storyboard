@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hYi-cV-Spu">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="dCr-QV-d1b">
+            <objects>
+                <viewController id="63d-Cx-Wbr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vQK-bi-bmr"/>
+                        <viewControllerLayoutGuide type="bottom" id="wZI-NN-lU9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aY3-Iw-ECc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="2_all_listings_ios" id="o2K-Ks-cfm"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HvU-g0-ZdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="482"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yc1-6X-nct">
+            <objects>
+                <viewController id="FdU-TO-1du" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jBD-Tg-HJk"/>
+                        <viewControllerLayoutGuide type="bottom" id="ogQ-5e-7of"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jJu-eI-8mr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="5_profile_ios" id="yGb-fq-ntT"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c5Q-Kn-r3f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="270" y="-714"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gzw-FN-Ryr">
+            <objects>
+                <viewController id="qah-hb-gJK" customClass="ViewController" customModule="adae_ios_atsushi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GhX-g4-H3Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="TGC-bh-S7a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="68R-vB-n2f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LDw-BD-iSL">
+                                <rect key="frame" x="0.0" y="28" width="414" height="659"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="1_home_inactive_ios" id="5Jy-Yt-JmW"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L7y-I9-VX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1004" y="-329"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hQr-5l-F0o">
+            <objects>
+                <tabBarController id="hYi-cV-Spu" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="G5i-wh-jcf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qah-hb-gJK" kind="relationship" relationship="viewControllers" id="ewR-rC-pdO"/>
+                        <segue destination="63d-Cx-Wbr" kind="relationship" relationship="viewControllers" id="XGn-dR-p7d"/>
+                        <segue destination="Z97-Ti-E0P" kind="relationship" relationship="viewControllers" id="1CL-O8-Hks"/>
+                        <segue destination="vIf-2Y-bzr" kind="relationship" relationship="viewControllers" id="tt7-WE-UfB"/>
+                        <segue destination="FdU-TO-1du" kind="relationship" relationship="viewControllers" id="aC7-wS-br4"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lrj-03-D4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="152" y="151"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="EOj-Xe-ar3">
+            <objects>
+                <viewController id="vIf-2Y-bzr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="skg-iT-QgX"/>
+                        <viewControllerLayoutGuide type="bottom" id="aQd-ZB-vbL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3AM-fh-7MG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="4_inbox_ios" id="Sme-cX-fnV"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kRw-3S-Gni" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7" y="1106"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="EL4-RO-Z7h">
+            <objects>
+                <viewController id="Z97-Ti-E0P" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Eiy-oI-vuh"/>
+                        <viewControllerLayoutGuide type="bottom" id="cXW-Cu-Inw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yza-ow-BTb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="3_transactions_ios" id="5la-7O-d94"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7o5-8j-d9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="475" y="1128"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="1_home_inactive_ios" width="25" height="25"/>
+        <image name="2_all_listings_ios" width="25" height="25"/>
+        <image name="3_transactions_ios" width="25" height="25"/>
+        <image name="4_inbox_ios" width="25" height="25"/>
+        <image name="5_profile_ios" width="25" height="25"/>
+    </resources>
+</document>
