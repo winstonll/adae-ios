@@ -10,10 +10,11 @@
 		0D03D62D1C51665600D227BA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D03D6201C51662E00D227BA /* Alamofire.framework */; };
 		0D03D62E1C51665600D227BA /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D03D6201C51662E00D227BA /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D49455C1C51654C00C8263E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49455B1C51654C00C8263E /* AppDelegate.swift */; };
-		0D49455E1C51654C00C8263E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49455D1C51654C00C8263E /* ViewController.swift */; };
+		0D49455E1C51654C00C8263E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49455D1C51654C00C8263E /* HomeViewController.swift */; };
 		0D4945611C51654C00C8263E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D49455F1C51654C00C8263E /* Main.storyboard */; };
 		0D4945631C51654C00C8263E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D4945621C51654C00C8263E /* Assets.xcassets */; };
 		0D4945661C51654C00C8263E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4945641C51654C00C8263E /* LaunchScreen.storyboard */; };
+		0DEB813A1C52CBE700DFD264 /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB81391C52CBE700DFD264 /* ListingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,11 +94,12 @@
 		0D03D6151C51662D00D227BA /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		0D4945581C51654C00C8263E /* adae-ios-atsushi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "adae-ios-atsushi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D49455B1C51654C00C8263E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0D49455D1C51654C00C8263E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0D49455D1C51654C00C8263E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0D4945601C51654C00C8263E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D4945621C51654C00C8263E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D4945651C51654C00C8263E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D4945671C51654C00C8263E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DEB81391C52CBE700DFD264 /* ListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				0D49455B1C51654C00C8263E /* AppDelegate.swift */,
-				0D49455D1C51654C00C8263E /* ViewController.swift */,
+				0D49455D1C51654C00C8263E /* HomeViewController.swift */,
+				0DEB81391C52CBE700DFD264 /* ListingViewController.swift */,
 				0D49455F1C51654C00C8263E /* Main.storyboard */,
 				0D4945621C51654C00C8263E /* Assets.xcassets */,
 				0D4945641C51654C00C8263E /* LaunchScreen.storyboard */,
@@ -287,7 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D49455E1C51654C00C8263E /* ViewController.swift in Sources */,
+				0DEB813A1C52CBE700DFD264 /* ListingViewController.swift in Sources */,
+				0D49455E1C51654C00C8263E /* HomeViewController.swift in Sources */,
 				0D49455C1C51654C00C8263E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
