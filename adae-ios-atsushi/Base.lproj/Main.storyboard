@@ -70,12 +70,22 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54m-oV-6rG">
                                 <rect key="frame" x="0.0" y="28" width="414" height="3509"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkZ-Cv-z8i">
+                                        <rect key="frame" x="0.0" y="113" width="414" height="414"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="414" id="OLj-sQ-6hn"/>
+                                        </constraints>
+                                        <state key="normal" title="uoft" image="u of t"/>
+                                        <connections>
+                                            <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="AiR-E6-MEh"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARr-gr-Uar">
                                         <rect key="frame" x="0.0" y="525" width="414" height="414"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="414" id="bPZ-YD-HRq"/>
                                         </constraints>
-                                        <state key="normal" image="harbourfront"/>
+                                        <state key="normal" title="harbourfront" image="harbourfront"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="g6j-bD-qk9"/>
                                         </connections>
@@ -85,7 +95,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="414" id="skT-uQ-0eN"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="discovery"/>
+                                        <state key="normal" title="discovery" image="discovery"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="zbZ-Gt-t2o"/>
                                         </connections>
@@ -95,7 +105,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="414" id="ArD-Zw-VEJ"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="dundas &amp; yonge"/>
+                                        <state key="normal" title="dundas" image="dundas &amp; yonge"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="6bJ-sz-EwE"/>
                                         </connections>
@@ -105,7 +115,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="414" id="b3u-yj-h3B"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="annex"/>
+                                        <state key="normal" title="annex" image="annex"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="UHu-6J-AK4"/>
                                         </connections>
@@ -115,7 +125,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="414" id="cAK-Gu-9LH"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="yorkville"/>
+                                        <state key="normal" title="yorkville" image="yorkville"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="4Bf-Z2-cch"/>
                                         </connections>
@@ -125,7 +135,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="414" id="z17-SG-ruw"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="distillery"/>
+                                        <state key="normal" title="distillery" image="distillery"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="IGa-CI-Fts"/>
                                         </connections>
@@ -135,19 +145,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="414" id="2OK-wC-GMe"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="dufferin"/>
+                                        <state key="normal" title="dufferin" image="dufferin"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="XMg-oB-FZg"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkZ-Cv-z8i">
-                                        <rect key="frame" x="0.0" y="113" width="414" height="414"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="414" id="OLj-sQ-6hn"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="u of t"/>
-                                        <connections>
-                                            <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="AiR-E6-MEh"/>
                                         </connections>
                                     </button>
                                 </subviews>

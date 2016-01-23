@@ -52,8 +52,28 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func button_clicked(sender: UIButton) {
-        // do something
-        print("uoft Tapped")
+        let title = sender.currentTitle!
+        
+        switch title {
+        case "uoft":
+            print("uoft tapped")
+        case "harbourfront":
+            print("harbourfront tapped")
+        case "discovery":
+            print("discovery tapped")
+        case "dundas":
+            print("dundas tapped")
+        case "annex":
+            print("annex tapped")
+        case "yorkville":
+            print("yorkville tapped")
+        case "distillery":
+            print("distillery tapped")
+        case "dufferin":
+            print("dufferin tapped")
+        default:
+            print(title)
+        }
     }
 
 }
