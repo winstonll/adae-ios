@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 
+
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var uoft: UIButton!
@@ -19,7 +20,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var yorkville: UIButton!
     @IBOutlet weak var distillery: UIButton!
     @IBOutlet weak var dufferin: UIButton!
-
+    
+    var district = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -41,6 +44,9 @@ class HomeViewController: UIViewController {
         Alamofire.request(.GET, urlString, headers: headers).response { (req, res, data, error) -> Void in
             print(res)
             let outputString = NSString(data: data!, encoding:NSUTF8StringEncoding)
+            
+            //let json = JSON(data: data)
+            
             print(outputString)
         }
 
@@ -56,25 +62,50 @@ class HomeViewController: UIViewController {
         
         switch title {
         case "uoft":
+            //tabBarController?.selectedIndex = 1
+            district = "Listing in UofT"
             print("uoft tapped")
         case "harbourfront":
+            //tabBarController?.selectedIndex = 1
+            district = "Listing in Harbourfront"
             print("harbourfront tapped")
         case "discovery":
+            //tabBarController?.selectedIndex = 1
+            district = "Listing in Discovery"
             print("discovery tapped")
         case "dundas":
+            //tabBarController?.selectedIndex = 1
+            district = "Listing in Dundas"
             print("dundas tapped")
         case "annex":
+            //tabBarController?.selectedIndex = 1
+            district = "Listing in Annex"
             print("annex tapped")
         case "yorkville":
+            //tabBarController?.selectedIndex = 1
+            district = "Listing in Yorkville"
             print("yorkville tapped")
         case "distillery":
+            //tabBarController?.selectedIndex = 1
+            district = "Listing in Distillery"
             print("distillery tapped")
         case "dufferin":
+            //tabBarController?.selectedIndex = 1
+            district = "Listing in Dufferin"
             print("dufferin tapped")
         default:
+            district = "Listing in Toronto"
             print(title)
         }
     }
-
+    
+    override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
+        //if (segue.identifier == "segueTest") {
+            let svc = segue!.destinationViewController as! ListingViewController
+            
+            svc.filter = district
+            
+        //}
+    }
 }
 

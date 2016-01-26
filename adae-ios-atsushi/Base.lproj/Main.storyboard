@@ -19,9 +19,15 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="62A-uh-qn4">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.99248242945381204" green="1" blue="0.97054495909854965" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Listings in Toronto" id="1KQ-vR-MQN">
-                                        <barButtonItem key="leftBarButtonItem" image="back_arrow" id="V5b-ru-cYh"/>
+                                        <barButtonItem key="leftBarButtonItem" image="back_arrow" id="V5b-ru-cYh">
+                                            <connections>
+                                                <segue destination="hYi-cV-Spu" kind="presentation" id="f0Y-En-ONV"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -30,6 +36,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="2_all_listings_ios" id="o2K-Ks-cfm"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="navigationTitle" destination="1KQ-vR-MQN" id="wbt-nd-jFd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HvU-g0-ZdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,7 +67,7 @@
         <!--Home View Controller-->
         <scene sceneID="gzw-FN-Ryr">
             <objects>
-                <viewController id="qah-hb-gJK" customClass="HomeViewController" customModule="adae_ios_atsushi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qah-hb-gJK" customClass="HomeViewController" customModule="adae_ios_atsushi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GhX-g4-H3Q"/>
                         <viewControllerLayoutGuide type="bottom" id="TGC-bh-S7a"/>
@@ -78,6 +87,7 @@
                                         <state key="normal" title="uoft" image="u of t"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="AiR-E6-MEh"/>
+                                            <segue destination="63d-Cx-Wbr" kind="show" identifier="" id="eCC-yA-tWa"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARr-gr-Uar">
@@ -88,6 +98,9 @@
                                         <state key="normal" title="harbourfront" image="harbourfront"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="g6j-bD-qk9"/>
+                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="ARr-gr-Uar" id="jnm-fj-Wmi">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsA-g3-YhA">
@@ -98,6 +111,9 @@
                                         <state key="normal" title="discovery" image="discovery"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="zbZ-Gt-t2o"/>
+                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="RsA-g3-YhA" id="dmm-73-k0k">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mX-ll-QLf">
@@ -108,6 +124,9 @@
                                         <state key="normal" title="dundas" image="dundas &amp; yonge"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="6bJ-sz-EwE"/>
+                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="1mX-ll-QLf" id="heP-o0-LVo">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNr-bw-Ew8">
@@ -118,6 +137,9 @@
                                         <state key="normal" title="annex" image="annex"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="UHu-6J-AK4"/>
+                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="bNr-bw-Ew8" id="Drp-Uy-267">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6P1-En-1Xu">
@@ -128,6 +150,9 @@
                                         <state key="normal" title="yorkville" image="yorkville"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="4Bf-Z2-cch"/>
+                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="6P1-En-1Xu" id="uoS-ty-jT8">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHV-ux-gMH">
@@ -138,6 +163,9 @@
                                         <state key="normal" title="distillery" image="distillery"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="IGa-CI-Fts"/>
+                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="FHV-ux-gMH" id="JcR-rt-u8O">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-VM-SFx">
@@ -148,6 +176,9 @@
                                         <state key="normal" title="dufferin" image="dufferin"/>
                                         <connections>
                                             <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="XMg-oB-FZg"/>
+                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="Joh-VM-SFx" id="iUy-qH-ncp">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -187,6 +218,7 @@
                             </scrollView>
                             <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="wlZ-BS-MeH">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -219,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="1467" y="-1262"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Home Tab Bar Controller-->
         <scene sceneID="hQr-5l-F0o">
             <objects>
-                <tabBarController id="hYi-cV-Spu" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hYi-cV-Spu" customClass="HomeTabBarController" customModule="adae_ios_atsushi" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="G5i-wh-jcf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -298,4 +330,7 @@
         <image name="u of t" width="527" height="527"/>
         <image name="yorkville" width="527" height="527"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="eCC-yA-tWa"/>
+    </inferredMetricsTieBreakers>
 </document>
