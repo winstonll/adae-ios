@@ -549,13 +549,13 @@
         <!--My Transactions-->
         <scene sceneID="aFe-kQ-oE7">
             <objects>
-                <tableViewController id="a8a-Ng-OnO" sceneMemberID="viewController">
+                <tableViewController id="a8a-Ng-OnO" customClass="TransactionViewController" customModule="adae_ios_atsushi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="F82-fk-Nlp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tPv-u3-F2n">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="transactionCell" id="tPv-u3-F2n">
                                 <rect key="frame" x="0.0" y="92" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tPv-u3-F2n" id="BlI-32-G4f">
@@ -578,19 +578,23 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Transactions" id="XD6-Bq-Iiv"/>
+                    <connections>
+                        <outlet property="tableview" destination="F82-fk-Nlp" id="sdc-yC-Lw4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ss1-OQ-7W2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1028" y="1474"/>
         </scene>
-        <!--Transaction View Controller-->
+        <!--Transaction Navigation Controller-->
         <scene sceneID="hp8-CA-CeH">
             <objects>
-                <navigationController storyboardIdentifier="transaction_view" id="poz-cj-a5t" customClass="TransactionViewController" customModule="adae_ios_atsushi" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="transaction_view" id="poz-cj-a5t" customClass="TransactionNavigationController" customModule="adae_ios_atsushi" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="3_transactions_ios" id="NLH-qg-4Fz"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oy0-3o-oLo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="a8a-Ng-OnO" kind="relationship" relationship="rootViewController" id="lXy-be-6yC"/>

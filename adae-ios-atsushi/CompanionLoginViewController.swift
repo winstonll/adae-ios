@@ -36,7 +36,7 @@ class CompanionLoginViewController: UIViewController {
         
         if NSUserDefaults.standardUserDefaults().boolForKey("hasLoggedIn") {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionViewController
+            let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
             self.presentViewController(controller, animated: true, completion: nil)
         }
         
@@ -76,7 +76,7 @@ class CompanionLoginViewController: UIViewController {
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLoggedIn")
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionViewController
+                let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
                 self.presentViewController(controller, animated: true, completion: nil)
 
             }else {
