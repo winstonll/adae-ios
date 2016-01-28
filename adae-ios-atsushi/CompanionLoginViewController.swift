@@ -22,12 +22,24 @@ class CompanionLoginViewController: UIViewController {
     
     @IBOutlet weak var login_button: UIButton!
     
-    
+    let MyKeychainWrapper = KeychainWrapper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(MyKeychainWrapper.myObjectForKey("v_Data"))
+        
         print("Inside of Companion Login Controller")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        if NSUserDefaults.standardUserDefaults().boolForKey("hasLoggedIn") {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionViewController
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,29 +56,38 @@ class CompanionLoginViewController: UIViewController {
     }
     
     @IBAction func didLogin(sender: AnyObject) {
-        print(email.text)
-        print(password.text)
         
         let headers = ["ApiToken": "YB4BJGf_sb3dEqbej6LM"]
         let urlString = "https://adae.co/api/v1/sessions"
         
         Alamofire.request(.POST, urlString, headers: headers, parameters: ["sessions": ["email": email.text!, "password": password.text!]]).response { (req, res, data, error) -> Void in
-            print(res?.statusCode)
-            let outputString = NSString(data: data!, encoding:NSUTF8StringEncoding)
-            print(outputString)
+            
+            //let outputString = NSString(data: data!, encoding:NSUTF8StringEncoding)
+            //print(outputString)
             
             if(res?.statusCode == 200) {
                 let json = JSON(data: data!)
                 
-                print(json["auth_token"])
-                print("Success")
+                //save user authentication token in keychain
+                self.MyKeychainWrapper.mySetObject(String(json["auth_token"]), forKey:kSecValueData)
+                self.MyKeychainWrapper.writeToKeychain()
+                
+                //save the fact that user has logged in so we don't need to show the login screen
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLoggedIn")
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionViewController
                 self.presentViewController(controller, animated: true, completion: nil)
 
             }else {
-                print("Fail")
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasLoggedIn")
+                
+                let alertView = UIAlertController(title: "Login Problem",
+                    message: "Wrong username or password." as String, preferredStyle:.Alert)
+                let okAction = UIAlertAction(title: "Try Again", style: .Default, handler: nil)
+                alertView.addAction(okAction)
+                self.presentViewController(alertView, animated: true, completion: nil)
+                return
             }
         }
     }
