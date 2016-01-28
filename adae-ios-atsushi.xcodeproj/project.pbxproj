@@ -12,6 +12,9 @@
 		0D4945611C51654C00C8263E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D49455F1C51654C00C8263E /* Main.storyboard */; };
 		0D4945631C51654C00C8263E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D4945621C51654C00C8263E /* Assets.xcassets */; };
 		0D4945661C51654C00C8263E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4945641C51654C00C8263E /* LaunchScreen.storyboard */; };
+		0D4B663E1C57D13D00399A11 /* MessageTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4B663D1C57D13D00399A11 /* MessageTabController.swift */; };
+		0D4B66401C5965D300399A11 /* CompanionLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4B663F1C5965D300399A11 /* CompanionLoginViewController.swift */; };
+		0D8710711C59DC6C008DFB09 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8710701C59DC6C008DFB09 /* TransactionViewController.swift */; };
 		0DA4383D1C543C9800E88832 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4383C1C543C9800E88832 /* HomeTabBarController.swift */; };
 		0DEB813A1C52CBE700DFD264 /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEB81391C52CBE700DFD264 /* ListingViewController.swift */; };
 		7DB8757EFD45E9ED94D62ADA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C5822C835087D58FF23801 /* Pods.framework */; };
@@ -25,6 +28,9 @@
 		0D4945621C51654C00C8263E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D4945651C51654C00C8263E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D4945671C51654C00C8263E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D4B663D1C57D13D00399A11 /* MessageTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTabController.swift; sourceTree = "<group>"; };
+		0D4B663F1C5965D300399A11 /* CompanionLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanionLoginViewController.swift; sourceTree = "<group>"; };
+		0D8710701C59DC6C008DFB09 /* TransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		0DA4383C1C543C9800E88832 /* HomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		0DEB81391C52CBE700DFD264 /* ListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
 		A259C63D6A3E12D2DC8DAFDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +84,9 @@
 				0D49455D1C51654C00C8263E /* HomeViewController.swift */,
 				0DEB81391C52CBE700DFD264 /* ListingViewController.swift */,
 				0DA4383C1C543C9800E88832 /* HomeTabBarController.swift */,
+				0D4B663D1C57D13D00399A11 /* MessageTabController.swift */,
+				0D8710701C59DC6C008DFB09 /* TransactionViewController.swift */,
+				0D4B663F1C5965D300399A11 /* CompanionLoginViewController.swift */,
 				0D49455F1C51654C00C8263E /* Main.storyboard */,
 				0D4945621C51654C00C8263E /* Assets.xcassets */,
 				0D4945641C51654C00C8263E /* LaunchScreen.storyboard */,
@@ -217,9 +226,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DEB813A1C52CBE700DFD264 /* ListingViewController.swift in Sources */,
+				0D8710711C59DC6C008DFB09 /* TransactionViewController.swift in Sources */,
 				0D49455E1C51654C00C8263E /* HomeViewController.swift in Sources */,
 				0DA4383D1C543C9800E88832 /* HomeTabBarController.swift in Sources */,
 				0D49455C1C51654C00C8263E /* AppDelegate.swift in Sources */,
+				0D4B66401C5965D300399A11 /* CompanionLoginViewController.swift in Sources */,
+				0D4B663E1C57D13D00399A11 /* MessageTabController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

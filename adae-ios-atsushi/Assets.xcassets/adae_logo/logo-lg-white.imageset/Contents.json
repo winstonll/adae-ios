@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "discovery.jpg",
+      "filename" : "logo-lg-white.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "logo-lg-white@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "logo-lg-white@3x.png",
       "scale" : "3x"
     }
   ],
