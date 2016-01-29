@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
         
         
         //connecting to adae API
-        let headers = ["ApiToken": "YB4BJGf_sb3dEqbej6LM"]
+        let headers = ["ApiToken": "H4LvhkAw3vooYosNS98S"]
         let urlString = "https://adae.co/api/v1/users"
         
         Alamofire.request(.GET, urlString, headers: headers).response { (req, res, data, error) -> Void in

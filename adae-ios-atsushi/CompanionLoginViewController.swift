@@ -28,6 +28,8 @@ class CompanionLoginViewController: UIViewController {
         super.viewDidLoad()
         
         print(MyKeychainWrapper.myObjectForKey("v_Data"))
+        print(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
+
         
         print("Inside of Companion Login Controller")
     }
@@ -57,7 +59,7 @@ class CompanionLoginViewController: UIViewController {
     
     @IBAction func didLogin(sender: AnyObject) {
         
-        let headers = ["ApiToken": "YB4BJGf_sb3dEqbej6LM"]
+        let headers = ["ApiToken": "H4LvhkAw3vooYosNS98S"]
         let urlString = "https://adae.co/api/v1/sessions"
         
         Alamofire.request(.POST, urlString, headers: headers, parameters: ["sessions": ["email": email.text!, "password": password.text!]]).response { (req, res, data, error) -> Void in
@@ -70,6 +72,8 @@ class CompanionLoginViewController: UIViewController {
                 
                 //save user authentication token in keychain
                 self.MyKeychainWrapper.mySetObject(String(json["auth_token"]), forKey:kSecValueData)
+                self.MyKeychainWrapper.mySetObject("2", forKey:kSecAttrAccount)
+                
                 self.MyKeychainWrapper.writeToKeychain()
                 
                 //save the fact that user has logged in so we don't need to show the login screen
