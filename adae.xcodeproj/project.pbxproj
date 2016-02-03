@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D4945581C51654C00C8263E /* adae-ios-atsushi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "adae-ios-atsushi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D4945581C51654C00C8263E /* adae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = adae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D49455B1C51654C00C8263E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D49455D1C51654C00C8263E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0D4945601C51654C00C8263E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		0D49454F1C51654C00C8263E = {
 			isa = PBXGroup;
 			children = (
-				0D49455A1C51654C00C8263E /* adae-ios-atsushi */,
+				0D49455A1C51654C00C8263E /* adae */,
 				0D4945591C51654C00C8263E /* Products */,
 				037086C8F50E12A258A61204 /* Pods */,
 				867CDFDAC25C748EDA87C8A9 /* Frameworks */,
@@ -86,12 +86,12 @@
 		0D4945591C51654C00C8263E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0D4945581C51654C00C8263E /* adae-ios-atsushi.app */,
+				0D4945581C51654C00C8263E /* adae.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0D49455A1C51654C00C8263E /* adae-ios-atsushi */ = {
+		0D49455A1C51654C00C8263E /* adae */ = {
 			isa = PBXGroup;
 			children = (
 				0D49455B1C51654C00C8263E /* AppDelegate.swift */,
@@ -114,6 +114,7 @@
 				0D4945671C51654C00C8263E /* Info.plist */,
 				0D8710721C59F360008DFB09 /* adae-ios-atsushi-Bridging-Header.h */,
 			);
+			name = adae;
 			path = "adae-ios-atsushi";
 			sourceTree = "<group>";
 		};
@@ -145,7 +146,7 @@
 			);
 			name = "adae-ios-atsushi";
 			productName = "adae-ios-atsushi";
-			productReference = 0D4945581C51654C00C8263E /* adae-ios-atsushi.app */;
+			productReference = 0D4945581C51654C00C8263E /* adae.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -160,10 +161,11 @@
 				TargetAttributes = {
 					0D4945571C51654C00C8263E = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = MWHVQG5UCX;
 					};
 				};
 			};
-			buildConfigurationList = 0D4945531C51654C00C8263E /* Build configuration list for PBXProject "adae-ios-atsushi" */;
+			buildConfigurationList = 0D4945531C51654C00C8263E /* Build configuration list for PBXProject "adae" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -374,10 +376,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "adae-ios-atsushi/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.adae.adae-ios-atsushi";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adae.adae;
+				PRODUCT_NAME = adae;
 				SWIFT_OBJC_BRIDGING_HEADER = "adae-ios-atsushi/adae-ios-atsushi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -389,10 +392,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "adae-ios-atsushi/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.adae.adae-ios-atsushi";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adae.adae;
+				PRODUCT_NAME = adae;
 				SWIFT_OBJC_BRIDGING_HEADER = "adae-ios-atsushi/adae-ios-atsushi-Bridging-Header.h";
 			};
 			name = Release;
@@ -400,7 +404,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0D4945531C51654C00C8263E /* Build configuration list for PBXProject "adae-ios-atsushi" */ = {
+		0D4945531C51654C00C8263E /* Build configuration list for PBXProject "adae" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D4945681C51654C00C8263E /* Debug */,

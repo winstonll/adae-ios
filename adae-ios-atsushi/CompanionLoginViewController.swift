@@ -27,6 +27,9 @@ class CompanionLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
         print(MyKeychainWrapper.myObjectForKey("v_Data"))
         print(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
 
@@ -94,5 +97,11 @@ class CompanionLoginViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 }

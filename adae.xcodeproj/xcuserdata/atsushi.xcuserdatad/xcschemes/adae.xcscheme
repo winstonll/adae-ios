@@ -17,7 +17,7 @@
                BlueprintIdentifier = "0D4945571C51654C00C8263E"
                BuildableName = "adae-ios-atsushi.app"
                BlueprintName = "adae-ios-atsushi"
-               ReferencedContainer = "container:adae-ios-atsushi.xcodeproj">
+               ReferencedContainer = "container:adae.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "0D4945571C51654C00C8263E"
             BuildableName = "adae-ios-atsushi.app"
             BlueprintName = "adae-ios-atsushi"
-            ReferencedContainer = "container:adae-ios-atsushi.xcodeproj">
+            ReferencedContainer = "container:adae.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "0D4945571C51654C00C8263E"
             BuildableName = "adae-ios-atsushi.app"
             BlueprintName = "adae-ios-atsushi"
-            ReferencedContainer = "container:adae-ios-atsushi.xcodeproj">
+            ReferencedContainer = "container:adae.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -77,7 +77,7 @@
             BlueprintIdentifier = "0D4945571C51654C00C8263E"
             BuildableName = "adae-ios-atsushi.app"
             BlueprintName = "adae-ios-atsushi"
-            ReferencedContainer = "container:adae-ios-atsushi.xcodeproj">
+            ReferencedContainer = "container:adae.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

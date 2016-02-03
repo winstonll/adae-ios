@@ -168,6 +168,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         if metadataObjects == nil || metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRectZero
             //messageLabel.text = "No QR code is detected"
+            print("No QR code is detected")
             return
         }
         
@@ -181,6 +182,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             
             if metadataObj.stringValue != nil {
                 //messageLabel.text = metadataObj.stringValue
+                print(metadataObj.stringValue)
             }
         }
     }
