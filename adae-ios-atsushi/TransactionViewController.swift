@@ -1,3 +1,4 @@
+
 //
 //  TransactionViewController.swift
 //  adae-ios-atsushi
@@ -15,13 +16,7 @@ class TransactionViewController: UITableViewController {
     @IBOutlet var tableview: UITableView!
     
     let myarray = ["item1", "item2", "item3"]
-    
-    /**var images = [JSON]()
-    
-    var items = [JSON]()
-    
-    var users = [JSON]()**/
-    
+        
     var jsonObject: JSON = [
         ["name": "John", "age": 21],
         ["name": "Bob", "age": 35],
@@ -83,6 +78,21 @@ class TransactionViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
+        if (segue.identifier == "transaction_segue") {
+            
+            let tabBarController = segue.destinationViewController as! TransactionDetailTabBarController
+            let svc = tabBarController.viewControllers![0] as! TransactionDetailController
+            
+            let selectedRow = tableView.indexPathForSelectedRow!.row
+                        
+            let modified_json: Dictionary = ["item": self.jsonObject["item"][selectedRow], "transaction": self.jsonObject["transaction"][selectedRow], "user": self.jsonObject["user"][selectedRow]]
+            
+            svc.toPass = modified_json
+            
+        }
     }
     
     func getTransactions(callback: ((isOk: Bool)->Void)?) -> String {
