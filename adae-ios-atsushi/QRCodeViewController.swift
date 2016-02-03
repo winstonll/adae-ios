@@ -33,7 +33,7 @@ class QRCodeViewController: UIViewController {
         
         super.viewDidLoad()
         
-        if String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount)) == String(toPass["transaction"]!["seller_id"]){
+        if String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount)) == String(toPass["transaction"]!["buyer_id"]){
             let uid = String(toPass["user"]!["id"])
             let iid = String(toPass["item"]!["id"])
             let tid = String(toPass["transaction"]!["id"])
@@ -41,6 +41,8 @@ class QRCodeViewController: UIViewController {
             let pre_encoded = tid + "-" + iid + "-" + uid
             
             self.displayQRImage(pre_encoded)
+            
+            self.scaledNonBlurryQR()
 
         } else {
             while let subview = qrView.subviews.last {
@@ -57,7 +59,7 @@ class QRCodeViewController: UIViewController {
     }
     
     @IBAction func changeImageViewScale(sender: AnyObject) {
-        
+        self.imgQRCode.transform = CGAffineTransformMakeScale(CGFloat(img_slider.value), CGFloat(img_slider.value))
     }
     
     func encodeQRData(data: String) -> String {
@@ -95,6 +97,16 @@ class QRCodeViewController: UIViewController {
             
             imgQRCode.image = UIImage(CIImage: qrcodeImage)
         }
+    }
+    
+    func scaledNonBlurryQR() {
+        let scaleX = imgQRCode.frame.size.width / qrcodeImage.extent.size.width
+        let scaleY = imgQRCode.frame.size.height / qrcodeImage.extent.size.height
+        
+        let transformedImage = qrcodeImage.imageByApplyingTransform(CGAffineTransformMakeScale(scaleX, scaleY))
+        
+        imgQRCode.image = UIImage(CIImage: transformedImage)
+        
     }
     
 }
