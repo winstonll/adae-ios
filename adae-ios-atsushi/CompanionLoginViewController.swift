@@ -62,7 +62,7 @@ class CompanionLoginViewController: UIViewController {
     
     @IBAction func didLogin(sender: AnyObject) {
         
-        let headers = ["ApiToken": "H4LvhkAw3vooYosNS98S"]
+        let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv"]
         let urlString = "https://adae.co/api/v1/sessions"
         
         Alamofire.request(.POST, urlString, headers: headers, parameters: ["sessions": ["email": email.text!, "password": password.text!]]).response { (req, res, data, error) -> Void in

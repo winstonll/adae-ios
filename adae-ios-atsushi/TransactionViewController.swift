@@ -97,7 +97,7 @@ class TransactionViewController: UITableViewController {
     
     func getTransactions(callback: ((isOk: Bool)->Void)?) -> String {
         
-        let headers = ["ApiToken": "H4LvhkAw3vooYosNS98S"]
+        let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv"]
         let urlString = "https://adae.co/api/v1/transactions/" + String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
         
         Alamofire.request(.GET, urlString, headers: headers).response { (req, res, data, error) -> Void in
