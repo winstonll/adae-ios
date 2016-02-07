@@ -14,6 +14,14 @@ class TransactionDetailController: UIViewController {
     
     var toPass = [String: JSON]()
     
+    @IBOutlet weak var requestTitle: UILabel!
+    
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    @IBOutlet weak var statusLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     

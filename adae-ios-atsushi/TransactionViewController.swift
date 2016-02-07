@@ -10,12 +10,11 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import KFSwiftImageLoader
 
 class TransactionViewController: UITableViewController {
     
     @IBOutlet var tableview: UITableView!
-    
-    let myarray = ["item1", "item2", "item3"]
         
     var jsonObject: JSON = [
         ["name": "John", "age": 21],
@@ -71,6 +70,8 @@ class TransactionViewController: UITableViewController {
         
         cell.seller_name.text = String(self.jsonObject["user"][indexPath.item]["name"])
         
+        cell.item_image.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["item"][indexPath.item]["photo_url"]) )
+        
         if (String(self.jsonObject["item"][indexPath.item]["user_id"]) == String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))) {
             cell.title.text = "Renting To:"
         }else {
@@ -101,8 +102,7 @@ class TransactionViewController: UITableViewController {
         let urlString = "https://adae.co/api/v1/transactions/" + String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
         
         Alamofire.request(.GET, urlString, headers: headers).response { (req, res, data, error) -> Void in
-            //let json = JSON(data: data!)
-            
+
             self.jsonObject = JSON(data: data!)
             
             print("JSONNN!!!!!!!!!!!")

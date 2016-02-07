@@ -75,7 +75,7 @@ class CompanionLoginViewController: UIViewController {
                 
                 //save user authentication token in keychain
                 self.MyKeychainWrapper.mySetObject(String(json["auth_token"]), forKey:kSecValueData)
-                self.MyKeychainWrapper.mySetObject("2", forKey:kSecAttrAccount)
+                self.MyKeychainWrapper.mySetObject(String(json["id"]), forKey:kSecAttrAccount)
                 
                 self.MyKeychainWrapper.writeToKeychain()
                 

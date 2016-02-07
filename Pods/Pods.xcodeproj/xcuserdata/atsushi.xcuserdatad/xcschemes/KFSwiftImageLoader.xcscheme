@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '470E8B45AF3F17802361069B'
-               BlueprintName = 'Alamofire'
+               BlueprintIdentifier = '7906863A85B9E77F1770DF93'
+               BlueprintName = 'KFSwiftImageLoader'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Alamofire.framework'>
+               BuildableName = 'KFSwiftImageLoader.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
