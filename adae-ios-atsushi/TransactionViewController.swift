@@ -20,7 +20,6 @@ class TransactionViewController: UITableViewController {
         ["name": "John", "age": 21],
         ["name": "Bob", "age": 35],
     ]
-
     
     let page_number = 1
     
@@ -29,9 +28,9 @@ class TransactionViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //call back to see if we properly got the transactions from API
         self.getTransactions { (isOk) -> Void in
             if (isOk) {
-                
                 self.tableview.reloadData()
 
                 print("async success")
@@ -82,6 +81,8 @@ class TransactionViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
+        
+        //pass the item transaction values to the next view, the tab controller
         if (segue.identifier == "transaction_segue") {
             
             let tabBarController = segue.destinationViewController as! TransactionDetailTabBarController
@@ -105,8 +106,7 @@ class TransactionViewController: UITableViewController {
 
             self.jsonObject = JSON(data: data!)
             
-            print("JSONNN!!!!!!!!!!!")
-            print(self.jsonObject)
+            //print(self.jsonObject)
             
             callback?(isOk: true)
         }

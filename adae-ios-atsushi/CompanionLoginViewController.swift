@@ -30,8 +30,17 @@ class CompanionLoginViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
+        /**
+        user authentication key
+        
         print(MyKeychainWrapper.myObjectForKey("v_Data"))
+        **/
+
+        /**
+        user id
+        
         print(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
+        **/
 
         
         print("Inside of Companion Login Controller")
@@ -39,6 +48,7 @@ class CompanionLoginViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
+        //If use has previously logged in, skip the login process and move onto transaction.
         if NSUserDefaults.standardUserDefaults().boolForKey("hasLoggedIn") {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
@@ -66,9 +76,6 @@ class CompanionLoginViewController: UIViewController {
         let urlString = "https://adae.co/api/v1/sessions"
         
         Alamofire.request(.POST, urlString, headers: headers, parameters: ["sessions": ["email": email.text!, "password": password.text!]]).response { (req, res, data, error) -> Void in
-            
-            //let outputString = NSString(data: data!, encoding:NSUTF8StringEncoding)
-            //print(outputString)
             
             if(res?.statusCode == 200) {
                 let json = JSON(data: data!)

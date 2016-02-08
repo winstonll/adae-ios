@@ -14,9 +14,7 @@ class TransactionDetailTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.selectedIndex = 1
-        
+                
         print("Inside of TabBar Controller")
     }
     

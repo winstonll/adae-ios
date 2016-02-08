@@ -40,6 +40,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         
         super.viewDidLoad()
         
+        //If User is a seller then generate a QR code, if not start video capture process for QR reader
         if String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount)) == String(toPass["transaction"]!["seller_id"]){
             let uid = String(toPass["user"]!["id"])
             let iid = String(toPass["item"]!["id"])
@@ -80,6 +81,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         self.imgQRCode.transform = CGAffineTransformMakeScale(CGFloat(img_slider.value), CGFloat(img_slider.value))
     }
     
+    //encode the String data that we are going to store in the QR code
     func encodeQRData(data: String) -> String {
         
         var encoded_JSON = ""
@@ -102,6 +104,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         return encoded_JSON
     }
     
+    //placing QR image in the image view
     func displayQRImage(data: String) -> Void {
         if self.qrcodeImage == nil {
             let data = self.encodeQRData(data).dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false)
@@ -117,6 +120,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         }
     }
     
+    //Scaling the QR image so it is not blurry
     func scaledNonBlurryQR() {
         let scaleX = imgQRCode.frame.size.width / qrcodeImage.extent.size.width
         let scaleY = imgQRCode.frame.size.height / qrcodeImage.extent.size.height
