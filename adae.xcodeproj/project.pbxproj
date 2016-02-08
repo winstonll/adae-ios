@@ -383,6 +383,7 @@
 				PRODUCT_NAME = adae;
 				SWIFT_OBJC_BRIDGING_HEADER = "adae-ios-atsushi/adae-ios-atsushi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -398,6 +399,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.adae.adae;
 				PRODUCT_NAME = adae;
 				SWIFT_OBJC_BRIDGING_HEADER = "adae-ios-atsushi/adae-ios-atsushi-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
