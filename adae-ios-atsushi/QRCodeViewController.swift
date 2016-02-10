@@ -45,27 +45,39 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             let uid = String(toPass["user"]!["id"])
             let iid = String(toPass["item"]!["id"])
             let tid = String(toPass["transaction"]!["id"])
+            var pre_encoded = tid + "-" + iid + "-" + uid
             
-            let pre_encoded = tid + "-" + iid + "-" + uid
+            if(String(toPass["transaction"]!["in_scan_date"]) == "null"){
+                pre_encoded += "-inscan"
+            } else {
+                pre_encoded += "-outscan"
+            }
             
-            self.displayQRImage(pre_encoded)
+            self.displayQRImage(self.encodeQRData(pre_encoded))
             
             self.scaledNonBlurryQR()
+            
+            print(pre_encoded)
+            print(self.encodeQRData(pre_encoded))
 
         } else {
             while let subview = qrView.subviews.last {
                 subview.removeFromSuperview()
             }
             
-            self.startVideoCapture()
+            if String(toPass["transaction"]!["out_scan_date"]) == "null"{
+                
+                self.startVideoCapture()
             
-            // Initialize QR Code Frame to highlight the QR code
-            qrCodeFrameView = UIView()
-            qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
-            qrCodeFrameView?.layer.borderWidth = 2
-            view.addSubview(qrCodeFrameView!)
-            view.bringSubviewToFront(qrCodeFrameView!)
-            
+                // Initialize QR Code Frame to highlight the QR code
+                qrCodeFrameView = UIView()
+                qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
+                qrCodeFrameView?.layer.borderWidth = 2
+                view.addSubview(qrCodeFrameView!)
+                view.bringSubviewToFront(qrCodeFrameView!)
+            } else {
+                print("no more video capture")
+            }
             
         }
         
@@ -187,6 +199,16 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             if metadataObj.stringValue != nil {
                 //messageLabel.text = metadataObj.stringValue
                 print(metadataObj.stringValue)
+                
+                if String(toPass["item"]!["listing_type"]) == "sell" {
+                    print("sell")
+                } else if String(toPass["item"]!["listing_type"]) == "rent" {
+                    print("rent")
+                } else if String(toPass["item"]!["listing_type"]) == "lease" {
+                    print("lease")
+                } else if String(toPass["item"]!["listing_type"]) == "time" {
+                    print("time")
+                }
             }
         }
     }
