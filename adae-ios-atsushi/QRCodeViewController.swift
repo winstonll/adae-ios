@@ -23,6 +23,11 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     
     var toPass = [String: JSON]()
     
+    var jsonObject: JSON = [
+        ["name": "John", "age": 21],
+        ["name": "Bob", "age": 35],
+    ]
+    
     let encoder = ["a", "b", "c", "d", "e", "f", "g", "h",
         "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
         "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7",
@@ -42,10 +47,10 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         
         //If User is a seller then generate a QR code, if not start video capture process for QR reader
         if String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount)) == String(toPass["transaction"]!["seller_id"]){
-            let uid = String(toPass["user"]!["id"])
             let iid = String(toPass["item"]!["id"])
             let tid = String(toPass["transaction"]!["id"])
-            var pre_encoded = tid + "-" + iid + "-" + uid
+            let qr_provider = String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
+            var pre_encoded = tid + "-" + iid + "-" +  qr_provider
             
             if(String(toPass["transaction"]!["in_scan_date"]) == "null"){
                 pre_encoded += "-inscan"
@@ -53,22 +58,19 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                 pre_encoded += "-outscan"
             }
             
-            self.displayQRImage(self.encodeQRData(pre_encoded))
+            self.displayQRImage(pre_encoded)
             
             self.scaledNonBlurryQR()
-            
-            print(pre_encoded)
-            print(self.encodeQRData(pre_encoded))
 
         } else {
             while let subview = qrView.subviews.last {
                 subview.removeFromSuperview()
             }
-            
-            if String(toPass["transaction"]!["out_scan_date"]) == "null"{
+            if (String(toPass["item"]!["listing_type"]) != "sell" && String(toPass["transaction"]!["out_scan_date"]) == "null") || (String(toPass["item"]!["listing_type"]) == "sell" && String(toPass["transaction"]!["in_scan_date"]) == "null"){
+                // Transaction hasn't been completed yet
                 
                 self.startVideoCapture()
-            
+                
                 // Initialize QR Code Frame to highlight the QR code
                 qrCodeFrameView = UIView()
                 qrCodeFrameView?.layer.borderColor = UIColor.greenColor().CGColor
@@ -76,7 +78,12 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                 view.addSubview(qrCodeFrameView!)
                 view.bringSubviewToFront(qrCodeFrameView!)
             } else {
-                print("no more video capture")
+                // Transaction has already been completed
+                let alertController = UIAlertController(title: "Scan Successful!", message:
+                    "You’ve already completed this transaction, this page cannot be accessed for that reason.", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
             }
             
         }
@@ -175,7 +182,46 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
 
         } catch let error as NSError {
             print(error)
+            
+            // Error alert for when the video capture has an error
+            let alertController = UIAlertController(title: "Please Try Again!", message:
+                "There was an error on our end, please try again.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func updateUserBalance(encoded_string: String, callback: ((isOk: Bool)->Void)?) -> String {
+        
+        let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv", "Authorization": String(MyKeychainWrapper.myObjectForKey("v_Data"))]
+        let urlString = "https://adae.co/api/v1/verify_scan"
+        
+        Alamofire.request(.GET, urlString, headers: headers, parameters: ["transactions": ["balance":  80, "inscan": encoded_string]]).response { (req, res, data, error) -> Void in
+            
+            if res?.statusCode == 204 {
+                
+                let alertController = UIAlertController(title: "Scan Successful!", message:
+                    "Please go ahead and exchange the item.", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
+                callback?(isOk: true)
+            } else {
+                
+                let alertController = UIAlertController(title: "Something went wrong!", message:
+                    "Invalid QR code was scanned.", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+
+                callback?(isOk: false)
+            }
+            
+        }
+        
+        return "returned"
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
@@ -183,8 +229,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects == nil || metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRectZero
-            //messageLabel.text = "No QR code is detected"
-            print("No QR code is detected")
+
             return
         }
         
@@ -196,19 +241,21 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             let barCodeObject = videoPreviewLayer?.transformedMetadataObjectForMetadataObject(metadataObj as AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
             qrCodeFrameView?.frame = barCodeObject.bounds;
             
+            self.captureSession?.stopRunning()
+            
             if metadataObj.stringValue != nil {
-                //messageLabel.text = metadataObj.stringValue
-                print(metadataObj.stringValue)
+                //print(metadataObj.stringValue)
                 
-                if String(toPass["item"]!["listing_type"]) == "sell" {
-                    print("sell")
-                } else if String(toPass["item"]!["listing_type"]) == "rent" {
-                    print("rent")
-                } else if String(toPass["item"]!["listing_type"]) == "lease" {
-                    print("lease")
-                } else if String(toPass["item"]!["listing_type"]) == "time" {
-                    print("time")
+                self.updateUserBalance(metadataObj.stringValue) { (isOk) -> Void in
+                    if (isOk) {
+                        print("async success")
+                    }else{
+                        
+                        self.captureSession?.startRunning()
+                        print("async fail")
+                    }
                 }
+                
             }
         }
     }

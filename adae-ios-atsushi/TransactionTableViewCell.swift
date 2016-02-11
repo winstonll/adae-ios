@@ -18,7 +18,7 @@ class TransactionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var seller_name: UILabel!
     
-    @IBOutlet weak var description_text: UILabel!
+    @IBOutlet weak var title_text: UILabel!
     
     @IBOutlet weak var cancel_button: UIButton!
     

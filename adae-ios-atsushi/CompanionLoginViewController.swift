@@ -79,7 +79,7 @@ class CompanionLoginViewController: UIViewController {
             
             if(res?.statusCode == 200) {
                 let json = JSON(data: data!)
-                
+                                
                 //save user authentication token in keychain
                 self.MyKeychainWrapper.mySetObject(String(json["auth_token"]), forKey:kSecValueData)
                 self.MyKeychainWrapper.mySetObject(String(json["id"]), forKey:kSecAttrAccount)

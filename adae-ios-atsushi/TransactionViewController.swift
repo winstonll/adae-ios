@@ -43,6 +43,18 @@ class TransactionViewController: UITableViewController {
         print("Inside of Transaction Controller")
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.getTransactions { (isOk) -> Void in
+            if (isOk) {
+                self.tableview.reloadData()
+                print("async success")
+                
+            }else{
+                print("async fail")
+            }
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         //tableview.reloadData()
@@ -65,7 +77,7 @@ class TransactionViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("transactionCell", forIndexPath: indexPath) as! TransactionTableViewCell
         
-        cell.description_text.text = String(self.jsonObject["item"][indexPath.item]["description"])
+        cell.title_text.text = String(self.jsonObject["item"][indexPath.item]["title"])
         
         cell.seller_name.text = String(self.jsonObject["user"][indexPath.item]["name"])
         
@@ -105,9 +117,7 @@ class TransactionViewController: UITableViewController {
         Alamofire.request(.GET, urlString, headers: headers).response { (req, res, data, error) -> Void in
 
             self.jsonObject = JSON(data: data!)
-            
-            //print(self.jsonObject)
-            
+                        
             callback?(isOk: true)
         }
         return "returned"

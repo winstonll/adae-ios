@@ -34,6 +34,13 @@ class TransactionDetailController: UIViewController {
             
             requestTitle.text =  String(self.toPass["user"]!["name"]).capitalizedString + " would like to try"
         }
+        if (String(self.toPass["transaction"]!["in_scan_date"]) != "null" && String(self.toPass["item"]!["listing_type"]) == "sell") ||
+        (String(self.toPass["transaction"]!["out_scan_date"]) != "null" && String(self.toPass["item"]!["listing_type"]) != "sell"){
+            statusLabel.text = "Complete"
+        } else if ( String(self.toPass["transaction"]!["in_scan_date"]) != "null" && String(self.toPass["item"]!["listing_type"]) == "rent" &&
+            String(self.toPass["transaction"]!["out_scan_date"]) == "null"){
+            statusLabel.text = "Item Out"
+        }
         
         descriptionLabel.text = String(self.toPass["item"]!["description"])
         

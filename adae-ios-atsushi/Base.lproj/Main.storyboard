@@ -604,7 +604,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="F82-fk-Nlp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.68000000000000005" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.0428018718957901" green="0.084928311407566071" blue="0.027434095740318298" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="transactionCell" rowHeight="150" id="tPv-u3-F2n" customClass="TransactionTableViewCell" customModule="adae" customModuleProvider="target">
@@ -647,14 +647,14 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imK-mb-DPb">
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imK-mb-DPb">
                                             <rect key="frame" x="344" y="111" width="56" height="30"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
                                             <state key="normal" title="Cancel">
                                                 <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wQC-v4-3UG">
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wQC-v4-3UG">
                                             <rect key="frame" x="354" y="4" width="52" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="52" id="UxM-Zo-cCv"/>
@@ -702,11 +702,11 @@
                                 <connections>
                                     <outlet property="avatar" destination="ng2-yj-fYQ" id="QgM-Bd-ogy"/>
                                     <outlet property="cancel_button" destination="imK-mb-DPb" id="cBe-2j-u7I"/>
-                                    <outlet property="description_text" destination="CQj-3z-XBf" id="nYm-zC-009"/>
                                     <outlet property="item_image" destination="Lfz-X0-IPc" id="3I3-dM-bL9"/>
                                     <outlet property="seller_name" destination="BfK-4z-gZ5" id="PEh-UB-AP4"/>
                                     <outlet property="time_frame" destination="wQC-v4-3UG" id="4OK-cg-LWe"/>
                                     <outlet property="title" destination="qIw-S2-F8Z" id="hjy-0j-ueb"/>
+                                    <outlet property="title_text" destination="CQj-3z-XBf" id="UDZ-Q1-wlu"/>
                                     <segue destination="lRi-YA-ZnB" kind="show" identifier="transaction_segue" id="Ou7-St-3BW"/>
                                 </connections>
                             </tableViewCell>
@@ -939,7 +939,7 @@
                         <outlet property="descriptionLabel" destination="Imn-44-WhV" id="0T6-oT-kAy"/>
                         <outlet property="priceLabel" destination="MBm-6F-htk" id="1pi-eA-Rpy"/>
                         <outlet property="requestTitle" destination="7Ka-oV-ao3" id="cTP-Vn-DhD"/>
-                        <outlet property="statusLabel" destination="aS8-Fe-tgT" id="XsC-2d-rrI"/>
+                        <outlet property="statusLabel" destination="OdE-mV-cib" id="Wxe-eL-NBB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cH4-9x-z0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
