@@ -1,0 +1,16 @@
+PODS:
+  - Alamofire (3.1.5)
+  - KFSwiftImageLoader (2.0.1)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - KFSwiftImageLoader (~> 2.0)
+  - SwiftyJSON (~> 2.3.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
+  KFSwiftImageLoader: a2b8a33a89116c767e7af8d2c109e8c483037b19
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+COCOAPODS: 0.39.0
