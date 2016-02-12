@@ -45,10 +45,6 @@ class TransactionDetailController: UIViewController {
         descriptionLabel.text = String(self.toPass["item"]!["description"])
         
         priceLabel.text = "$" + String(self.toPass["transaction"]!["total_price"])
-        
-        print(self.toPass)
-        
-        print("Inside of Transaction Detail Controller")
     }
     
     override func didReceiveMemoryWarning() {

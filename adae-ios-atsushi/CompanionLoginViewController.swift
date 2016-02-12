@@ -41,14 +41,11 @@ class CompanionLoginViewController: UIViewController {
         
         print(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
         **/
-
-        
-        print("Inside of Companion Login Controller")
     }
     
     override func viewDidAppear(animated: Bool) {
         
-        //If use has previously logged in, skip the login process and move onto transaction.
+        // If user has previously logged in, skip the login process and move onto transaction.
         if NSUserDefaults.standardUserDefaults().boolForKey("hasLoggedIn") {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
@@ -80,13 +77,13 @@ class CompanionLoginViewController: UIViewController {
             if(res?.statusCode == 200) {
                 let json = JSON(data: data!)
                                 
-                //save user authentication token in keychain
+                // save user authentication token in keychain
                 self.MyKeychainWrapper.mySetObject(String(json["auth_token"]), forKey:kSecValueData)
                 self.MyKeychainWrapper.mySetObject(String(json["id"]), forKey:kSecAttrAccount)
                 
                 self.MyKeychainWrapper.writeToKeychain()
                 
-                //save the fact that user has logged in so we don't need to show the login screen
+                // save the fact that user has logged in so we don't need to show the login screen
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLoggedIn")
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -106,9 +103,9 @@ class CompanionLoginViewController: UIViewController {
         }
     }
     
-    //Calls this function when the tap is recognized.
+    // Calls this function when the tap is recognized.
     func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        // Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
 }

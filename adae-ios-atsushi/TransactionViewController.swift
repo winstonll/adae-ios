@@ -39,8 +39,6 @@ class TransactionViewController: UITableViewController {
                 print("async fail")
             }
         }
-        
-        print("Inside of Transaction Controller")
     }
     
     override func viewWillAppear(animated: Bool) {
