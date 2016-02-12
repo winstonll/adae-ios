@@ -191,7 +191,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     }
     
     // Verifying the process of scanning QR code and updating the balance of the seller.
-    func updateUserBalance(encoded_string: String, callback: ((isOk: Bool)->Void)?) -> String {
+    func updateUserBalance(encoded_string: String, callback: ((isOk: Bool)->Void)?) -> Void {
         
         let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv", "Authorization": String(MyKeychainWrapper.myObjectForKey("v_Data"))]
         let urlString = "https://adae.co/api/v1/verify_scan"
@@ -219,8 +219,6 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             }
             
         }
-        
-        return "returned"
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {

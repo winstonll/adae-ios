@@ -32,7 +32,6 @@ class TransactionViewController: UITableViewController {
         self.getTransactions { (isOk) -> Void in
             if (isOk) {
                 self.tableview.reloadData()
-
                 print("async success")
 
             }else{
@@ -82,9 +81,20 @@ class TransactionViewController: UITableViewController {
         cell.item_image.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["item"][indexPath.item]["photo_url"]) )
         
         if (String(self.jsonObject["item"][indexPath.item]["user_id"]) == String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))) {
-            cell.title.text = "Renting To:"
+            
+            if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "rent"){
+                cell.title.text = "Renting To:"
+            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "sell") {
+                cell.title.text = "Selling To:"
+            }
+            
         }else {
-            cell.title.text = "Leasing From:"
+            
+            if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "rent"){
+                cell.title.text = "Renting From:"
+            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "sell") {
+                cell.title.text = "Buying From:"
+            }
         }
         
         return cell
@@ -110,7 +120,7 @@ class TransactionViewController: UITableViewController {
     func getTransactions(callback: ((isOk: Bool)->Void)?) -> String {
         
         let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv"]
-        let urlString = "https://adae.co/api/v1/transactions/" + String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
+        let urlString = "https://adae.co/api/v1/transaction_detail/" + String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
         
         Alamofire.request(.GET, urlString, headers: headers).response { (req, res, data, error) -> Void in
 
