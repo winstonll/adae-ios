@@ -949,7 +949,7 @@
         <!--Transaction Detail Tab Bar Controller-->
         <scene sceneID="xDw-fK-mVn">
             <objects>
-                <tabBarController id="lRi-YA-ZnB" customClass="TransactionDetailTabBarController" customModule="adae" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController modalTransitionStyle="partialCurl" id="lRi-YA-ZnB" customClass="TransactionDetailTabBarController" customModule="adae" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="h4H-PN-NIo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

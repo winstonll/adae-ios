@@ -4,3 +4,4 @@ use_frameworks!
 pod 'Alamofire'
 pod 'SwiftyJSON', '~> 2.3.0'
 pod 'KFSwiftImageLoader', '~> 2.0'
+pod 'JSQMessagesViewController' 
