@@ -199,7 +199,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv", "Authorization": String(MyKeychainWrapper.myObjectForKey("v_Data"))]
         let urlString = "https://adae.co/api/v1/verify_scan"
         
-        Alamofire.request(.GET, urlString, headers: headers, parameters: ["transactions": ["balance":  String(self.toPass["transaction"]!["total_price"]), "inscan": encoded_string]]).response { (req, res, data, error) -> Void in
+        Alamofire.request(.GET, urlString, headers: headers, parameters: ["transactions": ["balance":  String(self.toPass["transaction"]!["total_price"]), "scan": encoded_string] ]).response { (req, res, data, error) -> Void in
             
             if res?.statusCode == 204 {
                 
