@@ -27,17 +27,6 @@ class TransactionViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //call back to see if we properly got the transactions from API
-        self.getTransactions { (isOk) -> Void in
-            if (isOk) {
-                self.tableview.reloadData()
-                print("async success")
-
-            }else{
-                print("async fail")
-            }
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,7 +43,6 @@ class TransactionViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //tableview.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -129,5 +117,18 @@ class TransactionViewController: UITableViewController {
             callback?(isOk: true)
         }
         return "returned"
+    }
+    
+    @IBAction func transactionRefresh(sender: AnyObject) {
+        //call back to see if we properly got the transactions from API
+        self.getTransactions { (isOk) -> Void in
+            if (isOk) {
+                self.tableview.reloadData()
+                print("async success")
+                
+            }else{
+                print("async fail")
+            }
+        }
     }
 }

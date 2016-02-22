@@ -716,7 +716,13 @@
                             <outlet property="delegate" destination="a8a-Ng-OnO" id="ZWk-RO-HAc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Transactions" id="XD6-Bq-Iiv"/>
+                    <navigationItem key="navigationItem" title="My Transactions" id="XD6-Bq-Iiv">
+                        <barButtonItem key="rightBarButtonItem" image="refresh" id="UjL-AK-uiD">
+                            <connections>
+                                <action selector="transactionRefresh:" destination="a8a-Ng-OnO" id="wm0-W5-SVp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableview" destination="F82-fk-Nlp" id="sdc-yC-Lw4"/>
                     </connections>
@@ -1017,6 +1023,7 @@
         <image name="dundas &amp; yonge" width="527" height="527"/>
         <image name="harbourfront" width="527" height="527"/>
         <image name="logo-lg-white" width="76" height="76"/>
+        <image name="refresh" width="25" height="25"/>
         <image name="search_icon" width="21" height="21"/>
         <image name="transaction_details" width="28" height="28"/>
         <image name="u of t" width="527" height="527"/>
