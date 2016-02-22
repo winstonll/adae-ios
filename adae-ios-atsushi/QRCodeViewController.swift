@@ -45,29 +45,28 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         
         super.viewDidLoad()
         
-        // If User is a seller then generate a QR code, if not start video capture process for QR reader
-        if String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount)) == String(toPass["transaction"]!["seller_id"]){
-            let iid = String(toPass["item"]!["id"])
-            let tid = String(toPass["transaction"]!["id"])
-            let qr_provider = String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
-            var pre_encoded = tid + "-" + iid + "-" +  qr_provider
-            
-            if(String(toPass["transaction"]!["in_scan_date"]) == "null"){
-                pre_encoded += "-inscan"
-            } else {
-                pre_encoded += "-outscan"
-            }
-            
-            self.displayQRImage(pre_encoded)
-            
-            self.scaledNonBlurryQR()
+        if String(toPass["transaction"]!["status"]) != "Completed"{
+            // If User is a seller then generate a QR code, if not start video capture process for QR reader
+            if String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount)) == String(toPass["transaction"]!["seller_id"]) {
+                let iid = String(toPass["item"]!["id"])
+                let tid = String(toPass["transaction"]!["id"])
+                let qr_provider = String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
+                var pre_encoded = tid + "-" + iid + "-" +  qr_provider
+                
+                if(String(toPass["transaction"]!["in_scan_date"]) == "null"){
+                    pre_encoded += "-inscan"
+                } else {
+                    pre_encoded += "-outscan"
+                }
+                
+                self.displayQRImage(pre_encoded)
+                
+                self.scaledNonBlurryQR()
 
-        } else {
-            while let subview = qrView.subviews.last {
-                subview.removeFromSuperview()
-            }
-            if (String(toPass["item"]!["listing_type"]) != "sell" && String(toPass["transaction"]!["out_scan_date"]) == "null") || (String(toPass["item"]!["listing_type"]) == "sell" && String(toPass["transaction"]!["in_scan_date"]) == "null"){
-                // Transaction hasn't been completed yet
+            } else {
+                while let subview = qrView.subviews.last {
+                    subview.removeFromSuperview()
+                }
                 
                 self.startVideoCapture()
                 
@@ -77,15 +76,19 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                 qrCodeFrameView?.layer.borderWidth = 2
                 view.addSubview(qrCodeFrameView!)
                 view.bringSubviewToFront(qrCodeFrameView!)
-            } else {
-                // Transaction has already been completed
-                let alertController = UIAlertController(title: "Scan Successful!", message:
-                    "You’ve already completed this transaction, this page cannot be accessed for that reason.", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
-                
-                self.presentViewController(alertController, animated: true, completion: nil)
+
+            }
+        } else {
+            while let subview = qrView.subviews.last {
+                subview.removeFromSuperview()
             }
             
+            // Transaction has already been completed
+            let alertController = UIAlertController(title: "Scan Successful!", message:
+                "You’ve already completed this transaction, this page cannot be accessed for that reason.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
