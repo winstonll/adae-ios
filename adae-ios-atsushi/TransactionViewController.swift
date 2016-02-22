@@ -74,6 +74,10 @@ class TransactionViewController: UITableViewController {
                 cell.title.text = "Renting To:"
             } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "sell") {
                 cell.title.text = "Selling To:"
+            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "timeoffer") {
+                cell.title.text = "Offering To:"
+            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "lease") {
+                cell.title.text = "Leasing To:"
             }
             
         }else {
@@ -82,6 +86,10 @@ class TransactionViewController: UITableViewController {
                 cell.title.text = "Renting From:"
             } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "sell") {
                 cell.title.text = "Buying From:"
+            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "timeoffer") {
+                cell.title.text = "Receiving From:"
+            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "lease") {
+                cell.title.text = "Leasing From:"
             }
         }
         
