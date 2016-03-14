@@ -743,19 +743,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pvN-Ro-MRm">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pvN-Ro-MRm">
                                 <rect key="frame" x="107" y="268" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="WOp-cj-eEu"/>
-                                    <constraint firstAttribute="width" constant="200" id="pJG-5H-cnv"/>
+                                    <constraint firstAttribute="height" constant="200" id="EKS-Sw-xPp"/>
+                                    <constraint firstAttribute="width" constant="200" id="FXg-4S-ZCX"/>
                                 </constraints>
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="hCf-Ts-rhA">
                                 <rect key="frame" x="132" y="621" width="150" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="146" id="Cnu-cy-7ng"/>
-                                    <constraint firstAttribute="width" constant="146" id="FMt-K9-UMd"/>
-                                    <constraint firstAttribute="height" constant="30" id="wKS-Qb-f8n"/>
+                                    <constraint firstAttribute="width" constant="146" id="40Q-J6-6Cd"/>
                                 </constraints>
                                 <color key="minimumTrackTintColor" white="0.68000000000000005" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -765,15 +763,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pvN-Ro-MRm" firstAttribute="centerY" secondItem="nCF-Ey-sEv" secondAttribute="centerY" id="2fN-bL-zVL"/>
-                            <constraint firstItem="pvN-Ro-MRm" firstAttribute="leading" secondItem="nCF-Ey-sEv" secondAttribute="leadingMargin" constant="87" id="7mV-qO-eCx"/>
-                            <constraint firstItem="hCf-Ts-rhA" firstAttribute="centerX" secondItem="nCF-Ey-sEv" secondAttribute="centerX" id="CqJ-m0-W65"/>
-                            <constraint firstItem="hCf-Ts-rhA" firstAttribute="centerX" secondItem="nCF-Ey-sEv" secondAttribute="centerX" id="F4o-5s-hAz"/>
-                            <constraint firstItem="hCf-Ts-rhA" firstAttribute="centerX" secondItem="pvN-Ro-MRm" secondAttribute="centerX" id="JX7-2D-bN7"/>
-                            <constraint firstItem="pvN-Ro-MRm" firstAttribute="top" secondItem="t3h-m0-NL6" secondAttribute="bottom" constant="204" id="MT8-lp-OJF"/>
-                            <constraint firstItem="pvN-Ro-MRm" firstAttribute="centerY" secondItem="nCF-Ey-sEv" secondAttribute="centerY" id="gE0-ZY-Kpr"/>
-                            <constraint firstItem="Z0o-dG-ktt" firstAttribute="top" secondItem="hCf-Ts-rhA" secondAttribute="bottom" constant="36" id="mJ8-dR-1uv"/>
-                            <constraint firstItem="pvN-Ro-MRm" firstAttribute="centerX" secondItem="nCF-Ey-sEv" secondAttribute="centerX" id="sJ3-N6-hNx"/>
+                            <constraint firstItem="hCf-Ts-rhA" firstAttribute="centerX" secondItem="nCF-Ey-sEv" secondAttribute="centerX" id="0i4-DQ-RWD"/>
+                            <constraint firstItem="pvN-Ro-MRm" firstAttribute="centerY" secondItem="nCF-Ey-sEv" secondAttribute="centerY" id="1V4-ly-WNn"/>
+                            <constraint firstItem="pvN-Ro-MRm" firstAttribute="centerX" secondItem="nCF-Ey-sEv" secondAttribute="centerX" id="Lee-Ys-xEV"/>
+                            <constraint firstItem="Z0o-dG-ktt" firstAttribute="top" secondItem="hCf-Ts-rhA" secondAttribute="bottom" constant="36" id="V4c-ab-HEb"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="QR Code" image="QR code" id="LHZ-r2-kQQ"/>
@@ -943,6 +936,7 @@
                     <tabBarItem key="tabBarItem" title="Details" image="transaction_details" id="Lfc-ad-jOI"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="Imn-44-WhV" id="0T6-oT-kAy"/>
+                        <outlet property="instructionLabel" destination="JNY-TJ-3cc" id="LPt-fA-1K7"/>
                         <outlet property="priceLabel" destination="MBm-6F-htk" id="1pi-eA-Rpy"/>
                         <outlet property="requestTitle" destination="7Ka-oV-ao3" id="cTP-Vn-DhD"/>
                         <outlet property="statusLabel" destination="OdE-mV-cib" id="Wxe-eL-NBB"/>

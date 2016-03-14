@@ -22,6 +22,8 @@ class TransactionDetailController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
     
+    @IBOutlet weak var instructionLabel: UILabel!
+    
     let MyKeychainWrapper = KeychainWrapper()
     
     override func viewDidLoad() {
@@ -32,15 +34,30 @@ class TransactionDetailController: UIViewController {
         
         if String(self.toPass["transaction"]!["seller_id"]) == String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount)) {
             
-            requestTitle.text =  String(self.toPass["user"]!["name"]).capitalizedString + " would like to try"
+            if String(self.toPass["item"]!["listing_type"]) == "sell" {
+                requestTitle.text =  String(self.toPass["user"]!["name"]).capitalizedString + " would like to buy"
+                instructionLabel.text = "Make sure to have the unique QR code scanned by the other party when they pick up your item, you will be paid upon QR code scanning."
+            } else if ["rent", "lease"].contains(String(self.toPass["item"]!["listing_type"])) {
+                requestTitle.text =  String(self.toPass["user"]!["name"]).capitalizedString + " would like to try"
+                instructionLabel.text = "Make sure to have the unique QR code scanned by the other party when they pick up your item, they must scan it again when they return the item."
+            } else if String(self.toPass["item"]!["listing_type"]) == "timeoffer" {
+                requestTitle.text =  String(self.toPass["user"]!["name"]).capitalizedString + " would like to try"
+                instructionLabel.text = "Make sure to have the unique QR code scanned by the other party at the beginning of your service, they must scan it again at the end of your service."
+            }
+        } else {
+            if String(self.toPass["item"]!["listing_type"]) == "sell" {
+                requestTitle.text = "You requested to buy"
+                instructionLabel.text = "Make sure to have the in-app QR Scanner open when you meet. Scan the QR code on their phone to confirm your transaction."
+            } else if ["rent", "lease"].contains(String(self.toPass["item"]!["listing_type"])) {
+                requestTitle.text = "You requested to try"
+                instructionLabel.text = "Make sure to have the in-app QR Scanner open when you meet. Scan the QR code on their phone when you pick-up & return the item."
+            } else if String(self.toPass["item"]!["listing_type"]) == "timeoffer" {
+                requestTitle.text = "You requested to try"
+                instructionLabel.text = "Make sure to have the in-app QR Scanner open when you meet. Scan the QR code on their phone at the start & end of the service."
+            }
         }
-        if (String(self.toPass["transaction"]!["in_scan_date"]) != "null" && String(self.toPass["item"]!["listing_type"]) == "sell") ||
-        (String(self.toPass["transaction"]!["out_scan_date"]) != "null" && String(self.toPass["item"]!["listing_type"]) != "sell"){
-            statusLabel.text = "Complete"
-        } else if ( String(self.toPass["transaction"]!["in_scan_date"]) != "null" && String(self.toPass["item"]!["listing_type"]) == "rent" &&
-            String(self.toPass["transaction"]!["out_scan_date"]) == "null"){
-            statusLabel.text = "Item Out"
-        }
+        
+        statusLabel.text = String(self.toPass["transaction"]!["status"])
         
         descriptionLabel.text = String(self.toPass["item"]!["description"])
         
