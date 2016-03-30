@@ -47,9 +47,11 @@ class CompanionLoginViewController: UIViewController {
         
         // If user has previously logged in, skip the login process and move onto transaction.
         if NSUserDefaults.standardUserDefaults().boolForKey("hasLoggedIn") {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
-            self.presentViewController(controller, animated: true, completion: nil)
+            self.performSegueWithIdentifier("successfulLogin", sender: nil)
+
+            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
+            //self.presentViewController(controller, animated: true, completion: nil)
         }
         
     }
@@ -86,9 +88,11 @@ class CompanionLoginViewController: UIViewController {
                 // save the fact that user has logged in so we don't need to show the login screen
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLoggedIn")
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
-                self.presentViewController(controller, animated: true, completion: nil)
+                self.performSegueWithIdentifier("successfulLogin", sender: nil)
+                
+                //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                //let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
+                //self.presentViewController(controller, animated: true, completion: nil)
 
             }else {
                 NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasLoggedIn")

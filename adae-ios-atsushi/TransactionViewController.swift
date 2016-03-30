@@ -30,6 +30,8 @@ class TransactionViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false
+        
         self.getTransactions { (isOk) -> Void in
             if (isOk) {
                 self.tableview.reloadData()
@@ -42,6 +44,7 @@ class TransactionViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         super.viewDidAppear(animated)
     }
     
@@ -100,6 +103,8 @@ class TransactionViewController: UITableViewController {
         
         //pass the item transaction values to the next view, the tab controller
         if (segue.identifier == "transaction_segue") {
+            self.tabBarController?.tabBar.hidden = true
+            
             
             let tabBarController = segue.destinationViewController as! TransactionDetailTabBarController
             let svc = tabBarController.viewControllers![0] as! TransactionDetailController
@@ -109,7 +114,6 @@ class TransactionViewController: UITableViewController {
             let modified_json: Dictionary = ["item": self.jsonObject["item"][selectedRow], "transaction": self.jsonObject["transaction"][selectedRow], "user": self.jsonObject["user"][selectedRow]]
             
             svc.toPass = modified_json
-            
         }
     }
     

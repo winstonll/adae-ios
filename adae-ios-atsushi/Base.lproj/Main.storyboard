@@ -1,259 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="i6e-8S-J5W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="i6e-8S-J5W">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Listing View Controller-->
-        <scene sceneID="dCr-QV-d1b">
-            <objects>
-                <viewController id="63d-Cx-Wbr" customClass="ListingViewController" customModule="adae" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vQK-bi-bmr"/>
-                        <viewControllerLayoutGuide type="bottom" id="wZI-NN-lU9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aY3-Iw-ECc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="62A-uh-qn4">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <color key="backgroundColor" red="0.99248242945381204" green="1" blue="0.97054495909854965" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <navigationItem title="Listings in Toronto" id="1KQ-vR-MQN">
-                                        <barButtonItem key="leftBarButtonItem" image="back_arrow" id="V5b-ru-cYh">
-                                            <connections>
-                                                <segue destination="hYi-cV-Spu" kind="presentation" id="f0Y-En-ONV"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="2_all_listings_ios" id="o2K-Ks-cfm"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <connections>
-                        <outlet property="navigationTitle" destination="1KQ-vR-MQN" id="wbt-nd-jFd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HvU-g0-ZdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1016" y="351"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="yc1-6X-nct">
-            <objects>
-                <viewController id="FdU-TO-1du" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jBD-Tg-HJk"/>
-                        <viewControllerLayoutGuide type="bottom" id="ogQ-5e-7of"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jJu-eI-8mr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="5_profile_ios" id="yGb-fq-ntT"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c5Q-Kn-r3f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="512" y="-819"/>
-        </scene>
-        <!--Home View Controller-->
-        <scene sceneID="gzw-FN-Ryr">
-            <objects>
-                <viewController storyboardIdentifier="HomeTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qah-hb-gJK" customClass="HomeViewController" customModule="adae" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GhX-g4-H3Q"/>
-                        <viewControllerLayoutGuide type="bottom" id="TGC-bh-S7a"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="68R-vB-n2f">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="3586"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54m-oV-6rG">
-                                <rect key="frame" x="0.0" y="28" width="414" height="3509"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XkZ-Cv-z8i">
-                                        <rect key="frame" x="0.0" y="113" width="414" height="414"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="414" id="8VJ-ab-zpz"/>
-                                        </constraints>
-                                        <state key="normal" title="uoft" image="u of t"/>
-                                        <connections>
-                                            <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="AiR-E6-MEh"/>
-                                            <segue destination="63d-Cx-Wbr" kind="show" identifier="" id="eCC-yA-tWa"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARr-gr-Uar">
-                                        <rect key="frame" x="0.0" y="525" width="414" height="414"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="414" id="m0n-Yp-GpN"/>
-                                        </constraints>
-                                        <state key="normal" title="harbourfront" image="harbourfront"/>
-                                        <connections>
-                                            <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="g6j-bD-qk9"/>
-                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="ARr-gr-Uar" id="jnm-fj-Wmi">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RsA-g3-YhA">
-                                        <rect key="frame" x="0.0" y="938" width="414" height="414"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="414" id="T0T-4V-Adn"/>
-                                        </constraints>
-                                        <state key="normal" title="discovery" image="disovery district"/>
-                                        <connections>
-                                            <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="zbZ-Gt-t2o"/>
-                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="RsA-g3-YhA" id="dmm-73-k0k">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mX-ll-QLf">
-                                        <rect key="frame" x="0.0" y="1350" width="414" height="414"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="414" id="P09-rS-Ezv"/>
-                                        </constraints>
-                                        <state key="normal" title="dundas" image="dundas &amp; yonge"/>
-                                        <connections>
-                                            <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="6bJ-sz-EwE"/>
-                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="1mX-ll-QLf" id="heP-o0-LVo">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNr-bw-Ew8">
-                                        <rect key="frame" x="0.0" y="1763" width="414" height="414"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="414" id="y04-sy-T26"/>
-                                        </constraints>
-                                        <state key="normal" title="annex" image="annex"/>
-                                        <connections>
-                                            <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="UHu-6J-AK4"/>
-                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="bNr-bw-Ew8" id="Drp-Uy-267">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6P1-En-1Xu">
-                                        <rect key="frame" x="0.0" y="2176" width="414" height="414"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="414" id="4eN-5r-wwO"/>
-                                        </constraints>
-                                        <state key="normal" title="yorkville" image="yorkville"/>
-                                        <connections>
-                                            <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="4Bf-Z2-cch"/>
-                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="6P1-En-1Xu" id="uoS-ty-jT8">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHV-ux-gMH">
-                                        <rect key="frame" x="0.0" y="2589" width="414" height="414"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="414" id="38k-Gi-8EX"/>
-                                        </constraints>
-                                        <state key="normal" title="distillery" image="distillery "/>
-                                        <connections>
-                                            <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="IGa-CI-Fts"/>
-                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="FHV-ux-gMH" id="JcR-rt-u8O">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Joh-VM-SFx">
-                                        <rect key="frame" x="0.0" y="3002" width="414" height="414"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="414" id="tQn-ks-KDX"/>
-                                        </constraints>
-                                        <state key="normal" title="dufferin" image="dufferin"/>
-                                        <connections>
-                                            <action selector="button_clicked:" destination="qah-hb-gJK" eventType="touchUpInside" id="XMg-oB-FZg"/>
-                                            <segue destination="63d-Cx-Wbr" kind="popoverPresentation" popoverAnchorView="Joh-VM-SFx" id="iUy-qH-ncp">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="FHV-ux-gMH" firstAttribute="trailing" secondItem="Joh-VM-SFx" secondAttribute="trailing" id="1PN-7V-IiH"/>
-                                    <constraint firstItem="RsA-g3-YhA" firstAttribute="trailing" secondItem="ARr-gr-Uar" secondAttribute="trailing" id="50c-OP-ULh"/>
-                                    <constraint firstItem="FHV-ux-gMH" firstAttribute="leading" secondItem="6P1-En-1Xu" secondAttribute="leading" id="8Nt-KQ-fbA"/>
-                                    <constraint firstItem="FHV-ux-gMH" firstAttribute="top" secondItem="54m-oV-6rG" secondAttribute="top" constant="2589" id="BhO-Ua-y4I"/>
-                                    <constraint firstItem="FHV-ux-gMH" firstAttribute="trailing" secondItem="6P1-En-1Xu" secondAttribute="trailing" id="CVH-Va-H5m"/>
-                                    <constraint firstItem="1mX-ll-QLf" firstAttribute="leading" secondItem="RsA-g3-YhA" secondAttribute="leading" id="Cc8-W9-bJp"/>
-                                    <constraint firstItem="6P1-En-1Xu" firstAttribute="leading" secondItem="54m-oV-6rG" secondAttribute="leading" id="EUf-jA-eAa"/>
-                                    <constraint firstAttribute="bottom" secondItem="Joh-VM-SFx" secondAttribute="bottom" constant="93" id="FJy-me-q4e"/>
-                                    <constraint firstItem="Joh-VM-SFx" firstAttribute="top" secondItem="54m-oV-6rG" secondAttribute="top" constant="3002" id="GBK-Ee-oSp"/>
-                                    <constraint firstItem="ARr-gr-Uar" firstAttribute="leading" secondItem="XkZ-Cv-z8i" secondAttribute="leading" id="IRr-Hp-Ucq"/>
-                                    <constraint firstItem="6P1-En-1Xu" firstAttribute="top" secondItem="54m-oV-6rG" secondAttribute="top" constant="2176" id="Ig6-Rt-G9d"/>
-                                    <constraint firstItem="6P1-En-1Xu" firstAttribute="trailing" secondItem="bNr-bw-Ew8" secondAttribute="trailing" id="KbI-fU-gGe"/>
-                                    <constraint firstItem="ARr-gr-Uar" firstAttribute="top" secondItem="54m-oV-6rG" secondAttribute="top" constant="525" id="Knx-Yj-3vy"/>
-                                    <constraint firstItem="RsA-g3-YhA" firstAttribute="trailing" secondItem="1mX-ll-QLf" secondAttribute="trailing" id="Mw1-DK-sB6"/>
-                                    <constraint firstItem="1mX-ll-QLf" firstAttribute="leading" secondItem="bNr-bw-Ew8" secondAttribute="leading" id="REr-eH-nRg"/>
-                                    <constraint firstItem="XkZ-Cv-z8i" firstAttribute="trailing" secondItem="ARr-gr-Uar" secondAttribute="trailing" id="Sa9-md-fpd"/>
-                                    <constraint firstItem="Joh-VM-SFx" firstAttribute="centerX" secondItem="54m-oV-6rG" secondAttribute="centerX" id="XY4-XC-EdC"/>
-                                    <constraint firstItem="XkZ-Cv-z8i" firstAttribute="top" secondItem="54m-oV-6rG" secondAttribute="top" constant="113" id="YKt-sK-eOv"/>
-                                    <constraint firstItem="bNr-bw-Ew8" firstAttribute="leading" secondItem="6P1-En-1Xu" secondAttribute="leading" id="YkW-uI-gqc"/>
-                                    <constraint firstItem="RsA-g3-YhA" firstAttribute="top" secondItem="54m-oV-6rG" secondAttribute="top" constant="938" id="cLk-J3-O2L"/>
-                                    <constraint firstItem="RsA-g3-YhA" firstAttribute="leading" secondItem="ARr-gr-Uar" secondAttribute="leading" id="moA-wv-p55"/>
-                                    <constraint firstItem="Joh-VM-SFx" firstAttribute="leading" secondItem="FHV-ux-gMH" secondAttribute="leading" id="qWz-Hv-hEb"/>
-                                    <constraint firstItem="bNr-bw-Ew8" firstAttribute="top" secondItem="54m-oV-6rG" secondAttribute="top" constant="1763" id="qxf-ek-oTV"/>
-                                    <constraint firstItem="1mX-ll-QLf" firstAttribute="top" secondItem="54m-oV-6rG" secondAttribute="top" constant="1350" id="tvq-5C-25h"/>
-                                    <constraint firstAttribute="trailing" secondItem="6P1-En-1Xu" secondAttribute="trailing" id="yzU-cN-hhg"/>
-                                    <constraint firstItem="bNr-bw-Ew8" firstAttribute="trailing" secondItem="1mX-ll-QLf" secondAttribute="trailing" id="zyL-Ol-AJG"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="rect" keyPath="frame">
-                                        <rect key="value" x="0.0" y="0.0" width="414" height="736"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
-                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="wlZ-BS-MeH">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="54m-oV-6rG" firstAttribute="top" secondItem="GhX-g4-H3Q" secondAttribute="bottom" constant="8" symbolic="YES" id="1fE-T4-a9L"/>
-                            <constraint firstItem="TGC-bh-S7a" firstAttribute="top" secondItem="54m-oV-6rG" secondAttribute="bottom" constant="49" id="AmX-VU-9Ta"/>
-                            <constraint firstItem="wlZ-BS-MeH" firstAttribute="leading" secondItem="68R-vB-n2f" secondAttribute="leading" id="H6c-MQ-eue"/>
-                            <constraint firstItem="54m-oV-6rG" firstAttribute="trailing" secondItem="wlZ-BS-MeH" secondAttribute="trailing" id="Iaq-re-I3Z"/>
-                            <constraint firstAttribute="trailing" secondItem="wlZ-BS-MeH" secondAttribute="trailing" id="KH2-8z-gKE"/>
-                            <constraint firstItem="wlZ-BS-MeH" firstAttribute="leading" secondItem="54m-oV-6rG" secondAttribute="leading" id="VLF-xC-wul"/>
-                            <constraint firstItem="wlZ-BS-MeH" firstAttribute="top" secondItem="GhX-g4-H3Q" secondAttribute="bottom" id="dLR-R0-dKk"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="1_home_inactive_ios" id="5Jy-Yt-JmW"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="3586"/>
-                    <connections>
-                        <outlet property="annex" destination="bNr-bw-Ew8" id="K9D-dZ-09R"/>
-                        <outlet property="discovery" destination="RsA-g3-YhA" id="v1c-20-hFC"/>
-                        <outlet property="distillery" destination="FHV-ux-gMH" id="iaV-Qz-cNN"/>
-                        <outlet property="dufferin" destination="Joh-VM-SFx" id="pRT-lS-1Bg"/>
-                        <outlet property="dundas" destination="1mX-ll-QLf" id="bay-CZ-Xyc"/>
-                        <outlet property="harbourfront" destination="ARr-gr-Uar" id="2Y5-Nq-Bng"/>
-                        <outlet property="uoft" destination="XkZ-Cv-z8i" id="FYb-JT-kg8"/>
-                        <outlet property="yorkville" destination="6P1-En-1Xu" id="9Aw-8u-MCB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="L7y-I9-VX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1467" y="-1262"/>
-        </scene>
         <!--Companion Login View Controller-->
         <scene sceneID="dWa-lg-8va">
             <objects>
@@ -487,6 +241,7 @@
                         <outlet property="password" destination="Yx6-cU-FOx" id="Cpe-ef-syU"/>
                         <outlet property="privacy" destination="TaK-4P-AId" id="ZFM-kM-f2b"/>
                         <outlet property="terms" destination="bBh-UA-buD" id="av4-NJ-xqK"/>
+                        <segue destination="hYi-cV-Spu" kind="show" identifier="successfulLogin" id="dDs-eg-3FD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d81-pU-k95" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -505,11 +260,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="poz-cj-a5t" kind="relationship" relationship="viewControllers" id="AS8-im-hQM"/>
+                        <segue destination="ugX-NU-O8T" kind="relationship" relationship="viewControllers" id="4xa-rs-qls"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lrj-03-D4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="152" y="151"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="q1C-pV-lFM">
+            <objects>
+                <viewController id="VOb-8w-TrW" customClass="ChatViewController" customModule="adae" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dty-BK-3Us"/>
+                        <viewControllerLayoutGuide type="bottom" id="rvu-Te-kVO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1gh-jJ-p0e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MnX-49-drv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1224" y="1158"/>
         </scene>
         <!--Messages-->
         <scene sceneID="dNN-4v-7zT">
@@ -527,6 +302,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="VOb-8w-TrW" kind="show" id="Uwl-Vo-a5M"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -559,7 +337,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-828" y="987"/>
+            <point key="canvasLocation" x="-762" y="1070"/>
         </scene>
         <!--Search-->
         <scene sceneID="K5p-Qx-Ylx">
@@ -595,7 +373,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-339" y="1025"/>
+            <point key="canvasLocation" x="-445" y="1917"/>
         </scene>
         <!--My Transactions-->
         <scene sceneID="aFe-kQ-oE7">
@@ -729,7 +507,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ss1-OQ-7W2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="1474"/>
+            <point key="canvasLocation" x="1086" y="1479"/>
         </scene>
         <!--QR Code-->
         <scene sceneID="UXT-RH-dgB">
@@ -999,31 +777,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Bs-1N-kd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1329" y="884"/>
+            <point key="canvasLocation" x="-278" y="995"/>
         </scene>
     </scenes>
     <resources>
-        <image name="1_home_inactive_ios" width="25" height="25"/>
-        <image name="2_all_listings_ios" width="25" height="25"/>
         <image name="3_transactions_ios" width="25" height="25"/>
         <image name="4_inbox_ios" width="25" height="25"/>
-        <image name="5_profile_ios" width="25" height="25"/>
         <image name="QR code" width="28" height="28"/>
-        <image name="annex" width="527" height="527"/>
-        <image name="back_arrow" width="23" height="21"/>
-        <image name="disovery district" width="528" height="527"/>
-        <image name="distillery " width="527" height="527"/>
-        <image name="dufferin" width="527" height="527"/>
-        <image name="dundas &amp; yonge" width="527" height="527"/>
-        <image name="harbourfront" width="527" height="527"/>
         <image name="logo-lg-white" width="76" height="76"/>
         <image name="refresh" width="25" height="25"/>
         <image name="search_icon" width="21" height="21"/>
         <image name="transaction_details" width="28" height="28"/>
-        <image name="u of t" width="527" height="527"/>
-        <image name="yorkville" width="527" height="527"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="dmm-73-k0k"/>
-    </inferredMetricsTieBreakers>
 </document>
