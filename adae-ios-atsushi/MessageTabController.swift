@@ -63,14 +63,16 @@ class MessageTabController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("conversationCell", forIndexPath: indexPath) as! MessageTableViewCell
         
-        cell.conversation_title.text = "test"
+        cell.conversation_title.text = String(self.jsonObject["user"][indexPath.item]["name"])
+        
+        cell.user_avatar.loadImageFromURLString(String(self.jsonObject["user"][indexPath.item]["photo_url"]))
         
         return cell
     }
     
     func getConversations(callback: ((isOk: Bool)->Void)?) -> String {
         
-        let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv", "Authorization": "VWVHGPG3xoKY4ZR2b_AL"]
+        let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv", "Authorization": String(MyKeychainWrapper.myObjectForKey("v_Data"))]
         let urlString = "https://adae.co/api/v1/conversations"
             Alamofire.request(.GET, urlString, headers: headers).response { (req, res, data, error) -> Void in
             
