@@ -14,13 +14,32 @@ class MessageTabController: UITableViewController {
     
 
     @IBOutlet var tableview: UITableView!
-    let myarray = ["item1", "item2", "item3"]
-    let page_number = 1
+    var jsonObject: JSON = [
+    ["name": "John", "age": 21],
+    ["name": "Bob", "age": 35],
+    ]
+    let MyKeychainWrapper = KeychainWrapper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Inside of Message Controller")
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        //self.tabBarController?.tabBar.hidden = false
+        
+        self.getConversations { (isOk) -> Void in
+            if (isOk) {
+                self.tableview.reloadData()
+                print(self.jsonObject)
+                print("async success")
+                
+            }else{
+                print("async fail")
+            }
+        }
+    }
+
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -32,15 +51,35 @@ class MessageTabController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myarray.count
+        return self.jsonObject.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("customCell", forIndexPath: indexPath) //as! UITableViewCell
-        //cell.textLabel?.text = myarray[indexPath.item]
+        let cell = tableView.dequeueReusableCellWithIdentifier("conversationCell", forIndexPath: indexPath) as! MessageTableViewCell
+        
+        cell.conversation_title.text = "test"
+        
         return cell
     }
+    
+    func getConversations(callback: ((isOk: Bool)->Void)?) -> String {
+        
+        let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv", "Authorization": "VWVHGPG3xoKY4ZR2b_AL"]
+        let urlString = "https://adae.co/api/v1/conversations"
+            Alamofire.request(.GET, urlString, headers: headers).response { (req, res, data, error) -> Void in
+            
+            self.jsonObject = JSON(data: data!)
+            
+            callback?(isOk: true)
+        }
+        return "returned"
+    }
+
 }
 

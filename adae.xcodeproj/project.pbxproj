@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D0B6FA01CABEF9B00C5DFBB /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0B6F9F1CABEF9B00C5DFBB /* ChatViewController.swift */; };
+		0D0B6FA21CAC9FAB00C5DFBB /* MessageTableViewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0B6FA11CAC9FAB00C5DFBB /* MessageTableViewcell.swift */; };
 		0D49455C1C51654C00C8263E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49455B1C51654C00C8263E /* AppDelegate.swift */; };
 		0D49455E1C51654C00C8263E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49455D1C51654C00C8263E /* HomeViewController.swift */; };
 		0D4945611C51654C00C8263E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D49455F1C51654C00C8263E /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		0D0B6F9F1CABEF9B00C5DFBB /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		0D0B6FA11CAC9FAB00C5DFBB /* MessageTableViewcell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewcell.swift; sourceTree = "<group>"; };
 		0D4945581C51654C00C8263E /* adae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = adae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D49455B1C51654C00C8263E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D49455D1C51654C00C8263E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -104,10 +106,11 @@
 				0D8710701C59DC6C008DFB09 /* TransactionNavigationController.swift */,
 				0D87107E1C5FEC1C008DFB09 /* TransactionDetailTabBarController.swift */,
 				0D8710761C5A7854008DFB09 /* TransactionViewController.swift */,
+				0D4B663D1C57D13D00399A11 /* MessageTabController.swift */,
+				0D0B6FA11CAC9FAB00C5DFBB /* MessageTableViewcell.swift */,
 				0D8710781C5DBE9C008DFB09 /* TransactionTableViewCell.swift */,
 				0D87107A1C5FB1A5008DFB09 /* TransactionDetailController.swift */,
 				0D87107C1C5FEAF2008DFB09 /* QRCodeViewController.swift */,
-				0D4B663D1C57D13D00399A11 /* MessageTabController.swift */,
 				0D0B6F9F1CABEF9B00C5DFBB /* ChatViewController.swift */,
 				0D8710731C59F361008DFB09 /* KeychainWrapper.h */,
 				0D8710741C59F361008DFB09 /* KeychainWrapper.m */,
@@ -261,6 +264,7 @@
 				0D87107D1C5FEAF2008DFB09 /* QRCodeViewController.swift in Sources */,
 				0D87107B1C5FB1A5008DFB09 /* TransactionDetailController.swift in Sources */,
 				0D8710791C5DBE9C008DFB09 /* TransactionTableViewCell.swift in Sources */,
+				0D0B6FA21CAC9FAB00C5DFBB /* MessageTableViewcell.swift in Sources */,
 				0D49455C1C51654C00C8263E /* AppDelegate.swift in Sources */,
 				0D0B6FA01CABEF9B00C5DFBB /* ChatViewController.swift in Sources */,
 				0D4B66401C5965D300399A11 /* CompanionLoginViewController.swift in Sources */,
