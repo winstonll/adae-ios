@@ -12,12 +12,13 @@ import SwiftyJSON
 
 class MessageTabController: UITableViewController {
     
-
     @IBOutlet var tableview: UITableView!
+    
     var jsonObject: JSON = [
     ["name": "John", "age": 21],
     ["name": "Bob", "age": 35],
     ]
+    
     let MyKeychainWrapper = KeychainWrapper()
     
     override func viewDidLoad() {
@@ -56,7 +57,7 @@ class MessageTabController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.jsonObject.count
+        return self.jsonObject["conversation"].count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -69,6 +70,20 @@ class MessageTabController: UITableViewController {
         
         return cell
     }
+    
+    override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
+        
+        //pass the item transaction values to the next view, the tab controller
+        
+        let chatViewController = segue.destinationViewController as! ChatViewController
+        
+        let selectedRow = tableView.indexPathForSelectedRow!.row
+        
+        let modified_json: Dictionary = ["conversation": self.jsonObject["conversation"][selectedRow], "user": self.jsonObject["user"][selectedRow]]
+        
+        chatViewController.toPass = modified_json
+    }
+
     
     func getConversations(callback: ((isOk: Bool)->Void)?) -> String {
         

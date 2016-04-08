@@ -12,5 +12,24 @@ import SwiftyJSON
 import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
-
+    
+    var toPass = [String: JSON]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(self.toPass)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
 }

@@ -284,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnX-49-drv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1224" y="1158"/>
+            <point key="canvasLocation" x="-1014" y="1917"/>
         </scene>
         <!--Messages-->
         <scene sceneID="dNN-4v-7zT">
@@ -361,6 +361,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="x3o-Nz-Ht0" id="ijV-d8-d44"/>
+                        <outlet property="tableView" destination="K8I-Z5-LIu" id="trE-CN-A3G"/>
                         <outlet property="tableview" destination="K8I-Z5-LIu" id="Pae-30-Dr1"/>
                     </connections>
                 </tableViewController>
