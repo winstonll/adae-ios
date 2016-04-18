@@ -27,7 +27,7 @@ class CompanionLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CompanionLoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         /**
