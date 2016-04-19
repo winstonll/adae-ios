@@ -16,6 +16,7 @@
 		0D4945661C51654C00C8263E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D4945641C51654C00C8263E /* LaunchScreen.storyboard */; };
 		0D4B663E1C57D13D00399A11 /* MessageTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4B663D1C57D13D00399A11 /* MessageTabController.swift */; };
 		0D4B66401C5965D300399A11 /* CompanionLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4B663F1C5965D300399A11 /* CompanionLoginViewController.swift */; };
+		0D7DC0341CC50B4100DCDE94 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7DC0331CC50B4100DCDE94 /* Message.swift */; };
 		0D8710711C59DC6C008DFB09 /* TransactionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8710701C59DC6C008DFB09 /* TransactionNavigationController.swift */; };
 		0D8710751C59F361008DFB09 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8710741C59F361008DFB09 /* KeychainWrapper.m */; };
 		0D8710771C5A7854008DFB09 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8710761C5A7854008DFB09 /* TransactionViewController.swift */; };
@@ -40,6 +41,7 @@
 		0D4945671C51654C00C8263E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D4B663D1C57D13D00399A11 /* MessageTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTabController.swift; sourceTree = "<group>"; };
 		0D4B663F1C5965D300399A11 /* CompanionLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanionLoginViewController.swift; sourceTree = "<group>"; };
+		0D7DC0331CC50B4100DCDE94 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		0D8710701C59DC6C008DFB09 /* TransactionNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionNavigationController.swift; sourceTree = "<group>"; };
 		0D8710721C59F360008DFB09 /* adae-ios-atsushi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "adae-ios-atsushi-Bridging-Header.h"; sourceTree = "<group>"; };
 		0D8710731C59F361008DFB09 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				0D8710781C5DBE9C008DFB09 /* TransactionTableViewCell.swift */,
 				0D87107A1C5FB1A5008DFB09 /* TransactionDetailController.swift */,
 				0D87107C1C5FEAF2008DFB09 /* QRCodeViewController.swift */,
+				0D7DC0331CC50B4100DCDE94 /* Message.swift */,
 				0D8710731C59F361008DFB09 /* KeychainWrapper.h */,
 				0D8710741C59F361008DFB09 /* KeychainWrapper.m */,
 				0D49455F1C51654C00C8263E /* Main.storyboard */,
@@ -268,6 +271,7 @@
 				0D49455C1C51654C00C8263E /* AppDelegate.swift in Sources */,
 				0D0B6FA01CABEF9B00C5DFBB /* ChatViewController.swift in Sources */,
 				0D4B66401C5965D300399A11 /* CompanionLoginViewController.swift in Sources */,
+				0D7DC0341CC50B4100DCDE94 /* Message.swift in Sources */,
 				0D4B663E1C57D13D00399A11 /* MessageTabController.swift in Sources */,
 				0D87107F1C5FEC1C008DFB09 /* TransactionDetailTabBarController.swift in Sources */,
 			);

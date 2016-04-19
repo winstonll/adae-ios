@@ -105,7 +105,6 @@ class TransactionViewController: UITableViewController {
         if (segue.identifier == "transaction_segue") {
             self.tabBarController?.tabBar.hidden = true
             
-            
             let tabBarController = segue.destinationViewController as! TransactionDetailTabBarController
             let svc = tabBarController.viewControllers![0] as! TransactionDetailController
             

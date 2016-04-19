@@ -27,7 +27,7 @@ class MessageTabController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        //self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.hidden = false
         
         self.getConversations { (isOk) -> Void in
             if (isOk) {
@@ -74,13 +74,14 @@ class MessageTabController: UITableViewController {
     override func prepareForSegue(segue: (UIStoryboardSegue!), sender: AnyObject!) {
         
         //pass the item transaction values to the next view, the tab controller
+        self.tabBarController?.tabBar.hidden = true
         
         let chatViewController = segue.destinationViewController as! ChatViewController
         
         let selectedRow = tableView.indexPathForSelectedRow!.row
         
         let modified_json: Dictionary = ["conversation": self.jsonObject["conversation"][selectedRow], "user": self.jsonObject["user"][selectedRow]]
-        
+        //print(modified_json)
         chatViewController.toPass = modified_json
         chatViewController.senderId = String(modified_json["user"]!["id"])
         chatViewController.senderDisplayName = String(modified_json["user"]!["name"])
