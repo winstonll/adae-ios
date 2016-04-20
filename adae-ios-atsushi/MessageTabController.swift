@@ -83,8 +83,12 @@ class MessageTabController: UITableViewController {
         let modified_json: Dictionary = ["conversation": self.jsonObject["conversation"][selectedRow], "user": self.jsonObject["user"][selectedRow]]
         //print(modified_json)
         chatViewController.toPass = modified_json
-        chatViewController.senderId = String(modified_json["user"]!["id"])
-        chatViewController.senderDisplayName = String(modified_json["user"]!["name"])
+        //chatViewController.senderId = String(modified_json["user"]!["id"])
+        chatViewController.senderId = MyKeychainWrapper.myObjectForKey(kSecAttrAccount) as! String
+
+        //chatViewController.senderDisplayName = String(modified_json["user"]!["name"])
+        chatViewController.senderDisplayName = "me"
+
     }
 
     

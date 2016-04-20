@@ -13,9 +13,9 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
     
-    let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor(red: 10/255, green: 180/255, blue: 230/255, alpha: 1.0))
+    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor(red: 10/255, green: 180/255, blue: 230/255, alpha: 1.0))
     
-    let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.lightGrayColor())
+    let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor.lightGrayColor())
     
     var messages = [JSQMessage]()
 
@@ -32,9 +32,6 @@ class ChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(self.toPass)
-        print(self.senderDisplayName)
         
         self.getMessages { (isOk) -> Void in
             if (isOk) {
@@ -99,9 +96,9 @@ class ChatViewController: JSQMessagesViewController {
                 var name: String
                 
                 if ( String(message.1["user_id"]) == self.senderId){
-                    name = self.senderDisplayName
-                } else {
                     name = "me"
+                } else {
+                    name = self.senderDisplayName
                 }
                 
                 // Grab JSON created at date, strip and convert to NSDate
@@ -120,13 +117,27 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
+    func sendMessage(body: String, callback: ((isOk: Bool)->Void)?) -> Void {
+        let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv", "Authorization": String(MyKeychainWrapper.myObjectForKey("v_Data")) ]
+        let urlString = "https://adae.co/api/v1/messages/"
+
+        
+        Alamofire.request(.POST, urlString, headers: headers, parameters: ["messages": ["conversation_id": String(self.toPass["conversation"]!["id"]), "body": body] ] ).response { (req, res, data, error) -> Void in
+            
+            if res?.statusCode == 200 {
+                callback?(isOk: true)
+            } else {
+                callback?(isOk: false)
+            }
+        }
+    }
 }
 
 //MARK - Setup
 extension ChatViewController {
     func setup() {
-        self.senderId = UIDevice.currentDevice().identifierForVendor?.UUIDString
-        self.senderDisplayName = UIDevice.currentDevice().identifierForVendor?.UUIDString
+        //self.senderId = UIDevice.currentDevice().identifierForVendor?.UUIDString
+        //self.senderDisplayName = UIDevice.currentDevice().identifierForVendor?.UUIDString
     }
 }
 
@@ -151,6 +162,7 @@ extension ChatViewController {
         let data = messages[indexPath.row]
         
         switch(data.senderId) {
+            
         case self.senderId:
             return self.outgoingBubble
         default:
@@ -167,8 +179,17 @@ extension ChatViewController {
 extension ChatViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
-        self.messages += [message]
-        self.finishSendingMessage()
+        
+        let messageToSend = Message(text: message.text, senderId: MyKeychainWrapper.myObjectForKey(kSecAttrAccount) as! String, senderDisplayName: "me", created_at: NSDate())
+        
+        sendMessage(messageToSend.text) { (isOk) in
+            if (isOk){
+                self.messages += [message]
+                self.finishSendingMessage()
+            }else {
+                
+            }
+        }
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {
@@ -178,20 +199,7 @@ extension ChatViewController {
 
 //MARK - Syncano
 extension ChatViewController {
-    
-    func sendMessageToServer(message: JSQMessage) {
-        /**let messageToSend = Message()
-        messageToSend.text = message.text
-        messageToSend.senderId = self.senderId
-        messageToSend.channel = syncanoChannelName
-        messageToSend.other_permissions = .Full
-        messageToSend.saveWithCompletionBlock { error in
-            if (error != nil) {
-                //Super cool error handling
-            }
-        }**/
-    }
-    
+        
     func downloadNewestMessagesFromServer() {
         /**Message.please().giveMeDataObjectsWithCompletion { objects, error in
             if let messages = objects as? [Message]! {
