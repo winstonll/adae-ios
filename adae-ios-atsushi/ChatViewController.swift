@@ -39,9 +39,10 @@ class ChatViewController: JSQMessagesViewController {
         self.getMessages { (isOk) -> Void in
             if (isOk) {
                 self.setup()
-                self.addDemoMessages()
                 
                 self.activityIndicator.stopAnimating()
+                self.reloadMessagesView()
+                
                 print("async success")
                 
             }else{
@@ -53,16 +54,18 @@ class ChatViewController: JSQMessagesViewController {
     override func viewWillAppear(animated: Bool) {
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width
-
+        
+        // Activity indicator instance with color and size
         self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
         self.activityIndicator.color = UIColor.blueColor()
         self.activityIndicator.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         self.activityIndicator.hidden = false
-        //self.activityIndicator.center.x = self.view.center.x
-        self.activityIndicator.center.x = screenWidth
-        self.activityIndicator.center.y = self.view.center.y
-        print(self.view.center.x)
         
+        // Determine indicator position
+        self.activityIndicator.center.x = screenWidth / 2
+        self.activityIndicator.center.y = self.view.center.y
+        
+        // Add indicator to view
         self.view.addSubview(self.activityIndicator)
         self.activityIndicator.startAnimating()
     }
@@ -91,12 +94,28 @@ class ChatViewController: JSQMessagesViewController {
             
             print(self.jsonObject)
             
-            /**for message in self.jsonObject {
-                let jsqMessage = JSQMessage(senderId: message[""] message.senderId, senderDisplayName: message.senderId, date: message.created_at, text: message.text)
-                self.messages += [message]
+            
+            for message in self.jsonObject {
+                var name: String
+                
+                if ( String(message.1["user_id"]) == self.senderId){
+                    name = self.senderDisplayName
+                } else {
+                    name = "me"
+                }
+                
+                // Grab JSON created at date, strip and convert to NSDate
+                let dateFormatter = NSDateFormatter()
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                
+                let formatted = String(message.1["created_at"])[String(message.1["created_at"]).startIndex..<String(message.1["created_at"]).endIndex.advancedBy(-10)]
+                
+                let jsqMessage = JSQMessage(senderId:  String(message.1["user_id"]), senderDisplayName: name, date: dateFormatter.dateFromString(formatted), text: String(message.1["body"]) )
+                
+                self.messages += [jsqMessage]
             }
             
-            self.messages += [message]**/
             callback?(isOk: true)
         }
     }
@@ -105,16 +124,6 @@ class ChatViewController: JSQMessagesViewController {
 
 //MARK - Setup
 extension ChatViewController {
-    func addDemoMessages() {
-        for i in 1...10 {
-            let sender = (i%2 == 0) ? "Server" : self.senderId
-            let messageContent = "Message nr. \(i)"
-            let message = JSQMessage(senderId: sender, displayName: sender, text: messageContent)
-            self.messages += [message]
-        }
-        self.reloadMessagesView()
-    }
-    
     func setup() {
         self.senderId = UIDevice.currentDevice().identifierForVendor?.UUIDString
         self.senderDisplayName = UIDevice.currentDevice().identifierForVendor?.UUIDString
