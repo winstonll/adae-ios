@@ -35,7 +35,6 @@ class ChatViewController: JSQMessagesViewController {
         
         self.getMessages { (isOk) -> Void in
             if (isOk) {
-                self.setup()
                 
                 self.activityIndicator.stopAnimating()
                 self.reloadMessagesView()
@@ -80,6 +79,7 @@ class ChatViewController: JSQMessagesViewController {
         self.collectionView?.reloadData()
     }
     
+    // Get All Message from the server
     func getMessages(callback: ((isOk: Bool)->Void)?) -> Void {
         
         let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv", "Authorization": String(MyKeychainWrapper.myObjectForKey("v_Data")) ]
@@ -91,37 +91,42 @@ class ChatViewController: JSQMessagesViewController {
             
             print(self.jsonObject)
             
-            
-            for message in self.jsonObject {
-                var name: String
-                
-                if ( String(message.1["user_id"]) == self.senderId){
-                    name = "me"
-                } else {
-                    name = self.senderDisplayName
-                }
-                
-                // Grab JSON created at date, strip and convert to NSDate
-                let dateFormatter = NSDateFormatter()
-                
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-                
-                let formatted = String(message.1["created_at"])[String(message.1["created_at"]).startIndex..<String(message.1["created_at"]).endIndex.advancedBy(-10)]
-                
-                let jsqMessage = JSQMessage(senderId:  String(message.1["user_id"]), senderDisplayName: name, date: dateFormatter.dateFromString(formatted), text: String(message.1["body"]) )
-                
-                self.messages += [jsqMessage]
-            }
+            self.convertJSQ(self.jsonObject)
             
             callback?(isOk: true)
         }
     }
     
+    func convertJSQ(json: JSON){
+        
+        // Convert returned message to JSQMessage format
+        for message in json {
+            var name: String
+            
+            if ( String(message.1["user_id"]) == self.senderId){
+                name = "me"
+            } else {
+                name = self.senderDisplayName
+            }
+            
+            // Grab JSON created at date, strip and convert to NSDate
+            let dateFormatter = NSDateFormatter()
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            
+            let formatted = String(message.1["created_at"])[String(message.1["created_at"]).startIndex..<String(message.1["created_at"]).endIndex.advancedBy(-10)]
+            
+            let jsqMessage = JSQMessage(senderId:  String(message.1["user_id"]), senderDisplayName: name, date: dateFormatter.dateFromString(formatted), text: String(message.1["body"]) )
+            
+            self.messages += [jsqMessage]
+        }
+    }
+    
+    // Send message to server
     func sendMessage(body: String, callback: ((isOk: Bool)->Void)?) -> Void {
         let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv", "Authorization": String(MyKeychainWrapper.myObjectForKey("v_Data")) ]
         let urlString = "https://adae.co/api/v1/messages/"
 
-        
         Alamofire.request(.POST, urlString, headers: headers, parameters: ["messages": ["conversation_id": String(self.toPass["conversation"]!["id"]), "body": body] ] ).response { (req, res, data, error) -> Void in
             
             if res?.statusCode == 200 {
@@ -130,14 +135,6 @@ class ChatViewController: JSQMessagesViewController {
                 callback?(isOk: false)
             }
         }
-    }
-}
-
-//MARK - Setup
-extension ChatViewController {
-    func setup() {
-        //self.senderId = UIDevice.currentDevice().identifierForVendor?.UUIDString
-        //self.senderDisplayName = UIDevice.currentDevice().identifierForVendor?.UUIDString
     }
 }
 
