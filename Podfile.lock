@@ -4,12 +4,14 @@ PODS:
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - KFSwiftImageLoader (2.0.1)
+  - Socket.IO-Client-Swift (6.1.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire
   - JSQMessagesViewController
   - KFSwiftImageLoader (~> 2.0)
+  - Socket.IO-Client-Swift
   - SwiftyJSON (~> 2.3.0)
 
 SPEC CHECKSUMS:
@@ -17,6 +19,7 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   KFSwiftImageLoader: a2b8a33a89116c767e7af8d2c109e8c483037b19
+  Socket.IO-Client-Swift: b0ebbd80f039992bad6d0f74730b5a540d979520
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

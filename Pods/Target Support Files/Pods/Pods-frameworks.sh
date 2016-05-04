@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/JSQMessagesViewController.framework"
   install_framework "Pods/JSQSystemSoundPlayer.framework"
   install_framework "Pods/KFSwiftImageLoader.framework"
+  install_framework "Pods/SocketIOClientSwift.framework"
   install_framework "Pods/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/JSQMessagesViewController.framework"
   install_framework "Pods/JSQSystemSoundPlayer.framework"
   install_framework "Pods/KFSwiftImageLoader.framework"
+  install_framework "Pods/SocketIOClientSwift.framework"
   install_framework "Pods/SwiftyJSON.framework"
 fi

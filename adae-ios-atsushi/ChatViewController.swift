@@ -53,7 +53,7 @@ class ChatViewController: JSQMessagesViewController {
         
         // Activity indicator instance with color and size
         self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
-        self.activityIndicator.color = UIColor.blueColor()
+        self.activityIndicator.color = UIColor.grayColor()
         self.activityIndicator.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         self.activityIndicator.hidden = false
         
@@ -98,7 +98,6 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func convertJSQ(json: JSON){
-        
         // Convert returned message to JSQMessage format
         for message in json {
             var name: String
