@@ -33,6 +33,8 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SocketIOManager.sharedInstance.establishConnection()
+        
         self.getMessages { (isOk) -> Void in
             if (isOk) {
                 
@@ -89,7 +91,7 @@ class ChatViewController: JSQMessagesViewController {
             
             self.jsonObject = JSON(data: data!)
             
-            print(self.jsonObject)
+            //print(self.jsonObject)
             
             self.convertJSQ(self.jsonObject)
             

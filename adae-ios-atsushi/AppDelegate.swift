@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import JSQMessagesViewController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

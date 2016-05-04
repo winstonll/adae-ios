@@ -4,3 +4,4 @@
 
 #import "KeychainWrapper.h"
 #import <JSQMessagesViewController/JSQMessages.h>
+#import <SocketIOClientSwift/SocketIOClientSwift-Swift.h>

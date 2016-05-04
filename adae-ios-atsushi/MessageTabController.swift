@@ -32,7 +32,7 @@ class MessageTabController: UITableViewController {
         self.getConversations { (isOk) -> Void in
             if (isOk) {
                 self.tableview.reloadData()
-                print(self.jsonObject)
+                //print(self.jsonObject)
                 print("async success")
                 
             }else{
