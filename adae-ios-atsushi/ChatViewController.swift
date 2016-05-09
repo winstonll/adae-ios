@@ -65,7 +65,14 @@ class ChatViewController: JSQMessagesViewController {
         
         SocketIOManager.sharedInstance.socket.on("message") {data, ack in
             // Receive message here
-            print(data)
+            
+            let cu = data[0]["user"]!
+            
+            if (String(cu!) != String(self.MyKeychainWrapper.myObjectForKey(kSecAttrAccount)) ) {
+                let text = data[0]["body"]!
+                self.displayNewestMessagesFromServer(String(text!), date: String(data[0]["mobile_time"]), senderId: String(data[0]["user"]) )
+            }
+            
         }
         
         let screenSize: CGRect = UIScreen.mainScreen().bounds
@@ -108,8 +115,6 @@ class ChatViewController: JSQMessagesViewController {
         Alamofire.request(.GET, urlString, headers: headers, parameters: ["messages": ["conversation_id":  String(self.toPass["conversation"]!["id"]) ] ] ).response { (req, res, data, error) -> Void in
             
             self.jsonObject = JSON(data: data!)
-            
-            //print(self.jsonObject)
             
             self.convertJSQ(self.jsonObject)
             
@@ -215,14 +220,15 @@ extension ChatViewController {
 
 //MARK - Syncano
 extension ChatViewController {
+    
+    func displayNewestMessagesFromServer(body: String!, date: String, senderId: String) {
         
-    func downloadNewestMessagesFromServer() {
-        /**Message.please().giveMeDataObjectsWithCompletion { objects, error in
-            if let messages = objects as? [Message]! {
-                self.messages = self.jsqMessagesFromSyncanoMessages(messages)
-                self.finishReceivingMessage()
-            }
-        }**/
+        let current_time = NSDate()
+        
+        let message = JSQMessage(senderId: senderId, senderDisplayName: self.senderDisplayName, date: current_time, text: body)
+        
+        self.messages += [message]
+        self.finishReceivingMessage()
     }
     
     func jsqMessageFromServerMessage(message: Message) -> JSQMessage {
