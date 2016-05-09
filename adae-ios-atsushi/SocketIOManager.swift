@@ -11,8 +11,8 @@ import UIKit
 class SocketIOManager: NSObject {
     static let sharedInstance = SocketIOManager()
     
-    let socket = SocketIOClient(socketURL: NSURL(string: "https://adae.co:40091")!,
-                                options: [.Secure(true), .Log(true), .ForceWebsockets(true)])
+    let socket = SocketIOClient(socketURL: NSURL(string: "https://adae.co:40525")!,
+                                options: [.Secure(true), .ForceWebsockets(true)]) //.Log(true),
     
     override init() {
         super.init()

@@ -30,10 +30,10 @@ class ChatViewController: JSQMessagesViewController {
     
     var messageFrame = UIView()
     
+    var room = String() //#{@conversation.id}#{@conversation.recipient_id}#{@conversation.sender_id}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        SocketIOManager.sharedInstance.establishConnection()
         
         self.getMessages { (isOk) -> Void in
             if (isOk) {
@@ -50,6 +50,24 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        // Room number to subscribe to
+        self.room = String(self.toPass["conversation"]!["id"]) +
+            String(self.toPass["conversation"]!["recipient_id"]) +
+            String(self.toPass["conversation"]!["sender_id"])
+        
+        // Using Socket.io to Connect to proper port & Subscribe to room number
+        SocketIOManager.sharedInstance.establishConnection()
+        
+        SocketIOManager.sharedInstance.socket.on("connect") {data, ack in
+            SocketIOManager.sharedInstance.socket.emit("room", self.room)
+        }
+        
+        SocketIOManager.sharedInstance.socket.on("message") {data, ack in
+            // Receive message here
+            print(data)
+        }
+        
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         let screenWidth = screenSize.width
         
