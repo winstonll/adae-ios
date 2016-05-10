@@ -34,19 +34,6 @@ class ChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.getMessages { (isOk) -> Void in
-            if (isOk) {
-                
-                self.activityIndicator.stopAnimating()
-                self.reloadMessagesView()
-                
-                print("async success")
-                
-            }else{
-                print("async fail")
-            }
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -91,6 +78,20 @@ class ChatViewController: JSQMessagesViewController {
         // Add indicator to view
         self.view.addSubview(self.activityIndicator)
         self.activityIndicator.startAnimating()
+        
+        self.getMessages { (isOk) -> Void in
+            if (isOk) {
+                
+                self.activityIndicator.stopAnimating()
+                self.reloadMessagesView()
+                
+                print("async success")
+                
+            }else{
+                print("async fail")
+            }
+        }
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -231,16 +232,16 @@ extension ChatViewController {
         self.finishReceivingMessage()
     }
     
-    func jsqMessageFromServerMessage(message: Message) -> JSQMessage {
+    /**func jsqMessageFromServerMessage(message: Message) -> JSQMessage {
         let jsqMessage = JSQMessage(senderId: message.senderId, senderDisplayName: message.senderDisplayName, date: message.created_at, text: message.text)
         return jsqMessage
-    }
+    }**/
     
-    func jsqMessagesFromServerMessages(messages: [Message]) -> [JSQMessage] {
+    /**func jsqMessagesFromServerMessages(messages: [Message]) -> [JSQMessage] {
         var jsqMessages : [JSQMessage] = []
         for message in messages {
             jsqMessages.append(self.jsqMessageFromServerMessage(message))
         }
         return jsqMessages
-    }
+    }**/
 }
