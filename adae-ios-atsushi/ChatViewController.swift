@@ -84,6 +84,7 @@ class ChatViewController: JSQMessagesViewController {
                 
                 self.activityIndicator.stopAnimating()
                 self.reloadMessagesView()
+                self.scrollToBottomAnimated(false)
                 
                 print("async success")
                 
@@ -213,7 +214,7 @@ extension ChatViewController {
             }
         }
     }
-    
+        
     override func didPressAccessoryButton(sender: UIButton!) {
         
     }
