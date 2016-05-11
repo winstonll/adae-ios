@@ -220,7 +220,7 @@ extension ChatViewController {
     }
 }
 
-//MARK - Syncano
+//MARK - Socket.io helper
 extension ChatViewController {
     
     func displayNewestMessagesFromServer(body: String!, date: String, senderId: String) {
@@ -232,17 +232,4 @@ extension ChatViewController {
         self.messages += [message]
         self.finishReceivingMessage()
     }
-    
-    /**func jsqMessageFromServerMessage(message: Message) -> JSQMessage {
-        let jsqMessage = JSQMessage(senderId: message.senderId, senderDisplayName: message.senderDisplayName, date: message.created_at, text: message.text)
-        return jsqMessage
-    }**/
-    
-    /**func jsqMessagesFromServerMessages(messages: [Message]) -> [JSQMessage] {
-        var jsqMessages : [JSQMessage] = []
-        for message in messages {
-            jsqMessages.append(self.jsqMessageFromServerMessage(message))
-        }
-        return jsqMessages
-    }**/
 }
