@@ -39,7 +39,7 @@ class TransactionDetailController: UIViewController {
                 instructionLabel.text = "Make sure to have the unique QR code scanned by the other party when they pick up your item, you will be paid upon QR code scanning."
             } else if ["rent", "lease"].contains(String(self.toPass["item"]!["listing_type"])) {
                 requestTitle.text =  String(self.toPass["user"]!["name"]).capitalizedString + " would like to try"
-                instructionLabel.text = "Make sure to have the unique QR code scanned by the other party when they pick up your item, they must scan it again when they return the item."
+                instructionLabel.text = "Only one QR code scan is needed. Payment will be sent whenever this scan occurs."
             } else if String(self.toPass["item"]!["listing_type"]) == "timeoffer" {
                 requestTitle.text =  String(self.toPass["user"]!["name"]).capitalizedString + " would like to try"
                 instructionLabel.text = "Make sure to have the unique QR code scanned by the other party at the beginning of your service, they must scan it again at the end of your service."
@@ -50,7 +50,7 @@ class TransactionDetailController: UIViewController {
                 instructionLabel.text = "Make sure to have the in-app QR Scanner open when you meet. Scan the QR code on their phone to confirm your transaction."
             } else if ["rent", "lease"].contains(String(self.toPass["item"]!["listing_type"])) {
                 requestTitle.text = "You requested to try"
-                instructionLabel.text = "Make sure to have the in-app QR Scanner open when you meet. Scan the QR code on their phone when you pick-up & return the item."
+                instructionLabel.text = "Only one QR code scan is needed. Payment will be sent whenever this scan occurs."
             } else if String(self.toPass["item"]!["listing_type"]) == "timeoffer" {
                 requestTitle.text = "You requested to try"
                 instructionLabel.text = "Make sure to have the in-app QR Scanner open when you meet. Scan the QR code on their phone at the start & end of the service."
