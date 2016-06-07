@@ -24,6 +24,8 @@ class TransactionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var time_frame: UILabel!
     
+    @IBOutlet weak var innerView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

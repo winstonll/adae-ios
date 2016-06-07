@@ -25,6 +25,10 @@ class TransactionViewController: UITableViewController {
     
     let MyKeychainWrapper = KeychainWrapper()
     
+    let headerTitles = ["Current Transactions", "Completed Transactions"]
+    
+    var section_quantity = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -54,48 +58,115 @@ class TransactionViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section < headerTitles.count {
+            return headerTitles[section]
+        }
+        
+        return nil
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView //recast your view as a UITableViewHeaderFooterView
+        if (section == 0) {
+            header.contentView.backgroundColor = UIColor(red: 120/255, green: 205/255, blue: 27/255, alpha: 1.0) //make the background color light blue
+            header.textLabel!.textColor = UIColor.whiteColor() //make the text white
+            header.alpha = 0.5 //make the header transparent
+
+        } else if (section == 1) {
+            header.contentView.backgroundColor = UIColor(red: 96/255, green: 96/255, blue: 96/255, alpha: 1.0) //make the background color light blue
+            header.textLabel!.textColor = UIColor.whiteColor() //make the text white
+            header.alpha = 0.5 //make the header transparent
+
+        }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jsonObject["transaction"].count
+        
+        if section == 0 {
+            self.section_quantity = jsonObject["ongoing"].count
+            return self.section_quantity
+        }
+        else if section == 1 {
+            self.section_quantity = jsonObject["completed"].count
+            return self.section_quantity
+        }
+        else{
+            return 0
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("transactionCell", forIndexPath: indexPath) as! TransactionTableViewCell
         
-        cell.title_text.text = String(self.jsonObject["item"][indexPath.item]["title"])
-        
-        cell.seller_name.text = String(self.jsonObject["user"][indexPath.item]["name"])
-        
-        cell.item_image.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["item"][indexPath.item]["photo_url"]) )
-        
-        if (String(self.jsonObject["item"][indexPath.item]["user_id"]) == String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))) {
+        if indexPath.section == 0 {
             
-            if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "rent"){
-                cell.title.text = "Renting To:"
-            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "sell") {
-                cell.title.text = "Selling To:"
-            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "timeoffer") {
-                cell.title.text = "Offering To:"
-            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "lease") {
-                cell.title.text = "Services To:"
+            cell.title_text.text = String(self.jsonObject["item_og"][indexPath.item]["title"])
+            
+            cell.seller_name.text = String(self.jsonObject["user_og"][indexPath.item]["name"])
+            
+            cell.item_image.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["item_og"][indexPath.item]["photo_url"]) )
+            
+            if (String(self.jsonObject["item_og"][indexPath.item]["user_id"]) == String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))) {
+                
+                if (String(self.jsonObject["item_og"][indexPath.item]["listing_type"]) == "rent"){
+                    cell.title.text = "Renting To:"
+                } else if (String(self.jsonObject["item_og"][indexPath.item]["listing_type"]) == "sell") {
+                    cell.title.text = "Selling To:"
+                } else if (String(self.jsonObject["item_og"][indexPath.item]["listing_type"]) == "timeoffer") {
+                    cell.title.text = "Offering To:"
+                } else if (String(self.jsonObject["item_og"][indexPath.item]["listing_type"]) == "lease") {
+                    cell.title.text = "Services To:"
+                }
+                
+            }else {
+                
+                if (String(self.jsonObject["item_og"][indexPath.item]["listing_type"]) == "rent"){
+                    cell.title.text = "Renting From:"
+                } else if (String(self.jsonObject["item_og"][indexPath.item]["listing_type"]) == "sell") {
+                    cell.title.text = "Buying From:"
+                } else if (String(self.jsonObject["item_og"][indexPath.item]["listing_type"]) == "timeoffer") {
+                    cell.title.text = "Receiving From:"
+                } else if (String(self.jsonObject["item_og"][indexPath.item]["listing_type"]) == "lease") {
+                    cell.title.text = "Services From:"
+                }
             }
+        } else if indexPath.section == 1 {
             
-        }else {
+            cell.title_text.text = String(self.jsonObject["item_co"][indexPath.item]["title"])
             
-            if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "rent"){
-                cell.title.text = "Renting From:"
-            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "sell") {
-                cell.title.text = "Buying From:"
-            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "timeoffer") {
-                cell.title.text = "Receiving From:"
-            } else if (String(self.jsonObject["item"][indexPath.item]["listing_type"]) == "lease") {
-                cell.title.text = "Services From:"
+            cell.seller_name.text = String(self.jsonObject["user_co"][indexPath.item]["name"])
+            
+            cell.item_image.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["item_co"][indexPath.item]["photo_url"]) )
+            
+            if (String(self.jsonObject["item_co"][indexPath.item]["user_id"]) == String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))) {
+                
+                if (String(self.jsonObject["item_co"][indexPath.item]["listing_type"]) == "rent"){
+                    cell.title.text = "Renting To:"
+                } else if (String(self.jsonObject["item_co"][indexPath.item]["listing_type"]) == "sell") {
+                    cell.title.text = "Selling To:"
+                } else if (String(self.jsonObject["item_co"][indexPath.item]["listing_type"]) == "timeoffer") {
+                    cell.title.text = "Offering To:"
+                } else if (String(self.jsonObject["item_co"][indexPath.item]["listing_type"]) == "lease") {
+                    cell.title.text = "Services To:"
+                }
+                
+            }else {
+                if (String(self.jsonObject["item_co"][indexPath.item]["listing_type"]) == "rent"){
+                    cell.title.text = "Renting From:"
+                } else if (String(self.jsonObject["item_co"][indexPath.item]["listing_type"]) == "sell") {
+                    cell.title.text = "Buying From:"
+                } else if (String(self.jsonObject["item_co"][indexPath.item]["listing_type"]) == "timeoffer") {
+                    cell.title.text = "Receiving From:"
+                } else if (String(self.jsonObject["item_co"][indexPath.item]["listing_type"]) == "lease") {
+                    cell.title.text = "Services From:"
+                }
             }
         }
-        
         return cell
     }
     
@@ -108,22 +179,32 @@ class TransactionViewController: UITableViewController {
             let tabBarController = segue.destinationViewController as! TransactionDetailTabBarController
             let svc = tabBarController.viewControllers![0] as! TransactionDetailController
             
-            let selectedRow = tableView.indexPathForSelectedRow!.row
-                        
-            let modified_json: Dictionary = ["item": self.jsonObject["item"][selectedRow], "transaction": self.jsonObject["transaction"][selectedRow], "user": self.jsonObject["user"][selectedRow]]
-            
-            svc.toPass = modified_json
+            // Check the section that the row was selected in to determine which json to send to next page
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                if indexPath.section == 0 {
+                    let modified_json: Dictionary = ["item": self.jsonObject["item_og"][indexPath.row], "transaction": self.jsonObject["ongoing"][indexPath.row], "user": self.jsonObject["user_og"][indexPath.row]]
+                    
+                    svc.toPass = modified_json
+                    
+                } else if indexPath.section == 1 {
+                    let modified_json: Dictionary = ["item": self.jsonObject["item_co"][indexPath.row], "transaction": self.jsonObject["completed"][indexPath.row], "user": self.jsonObject["user_co"][indexPath.row]]
+                    
+                    svc.toPass = modified_json
+                }
+            }
         }
     }
     
     func getTransactions(callback: ((isOk: Bool)->Void)?) -> String {
         
         let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv"]
-        let urlString = "https://adae.co/api/v1/transaction_detail/" + String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
+        let urlString = "https://adae.co/api/v2/transaction_detail/" + String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))
         
         Alamofire.request(.GET, urlString, headers: headers).response { (req, res, data, error) -> Void in
 
             self.jsonObject = JSON(data: data!)
+            
+            print(self.jsonObject)
                         
             callback?(isOk: true)
         }
