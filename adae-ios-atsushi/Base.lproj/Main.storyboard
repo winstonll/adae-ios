@@ -11,7 +11,7 @@
         <!--Companion Login View Controller-->
         <scene sceneID="dWa-lg-8va">
             <objects>
-                <viewController id="i6e-8S-J5W" customClass="CompanionLoginViewController" customModule="adae" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="i6e-8S-J5W" customClass="CompanionLoginViewController" customModule="adae" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fiH-61-77z"/>
                         <viewControllerLayoutGuide type="bottom" id="PNk-3Z-KWs"/>
@@ -439,7 +439,7 @@
                                                         <constraint firstAttribute="width" constant="150" id="ISz-Wy-cRX"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ng2-yj-fYQ">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5_profile_ios" translatesAutoresizingMaskIntoConstraints="NO" id="ng2-yj-fYQ">
                                                     <rect key="frame" x="158" y="36" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="ucX-0Y-OiT"/>
@@ -547,6 +547,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Transactions" id="XD6-Bq-Iiv">
+                        <barButtonItem key="leftBarButtonItem" image="log out" id="1hf-CG-IXF">
+                            <connections>
+                                <action selector="logOut:" destination="a8a-Ng-OnO" id="Cxo-la-JR5"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="refresh" id="UjL-AK-uiD">
                             <connections>
                                 <action selector="transactionRefresh:" destination="a8a-Ng-OnO" id="wm0-W5-SVp"/>
@@ -835,7 +840,9 @@
     <resources>
         <image name="3_transactions_ios" width="25" height="25"/>
         <image name="4_inbox_ios" width="25" height="25"/>
+        <image name="5_profile_ios" width="25" height="25"/>
         <image name="QR code" width="28" height="28"/>
+        <image name="log out" width="25" height="25"/>
         <image name="logo-lg-white" width="76" height="76"/>
         <image name="refresh" width="25" height="25"/>
         <image name="search_icon" width="21" height="21"/>

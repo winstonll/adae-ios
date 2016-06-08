@@ -46,7 +46,7 @@ class CompanionLoginViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         // If user has previously logged in, skip the login process and move onto transaction.
-        if NSUserDefaults.standardUserDefaults().boolForKey("hasLoggedIn") {
+        if (NSUserDefaults.standardUserDefaults().boolForKey("hasLoggedIn")) {
             self.performSegueWithIdentifier("successfulLogin", sender: nil)
 
             //let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -99,8 +99,10 @@ class CompanionLoginViewController: UIViewController {
                 
                 let alertView = UIAlertController(title: "Login Problem",
                     message: "Wrong username or password." as String, preferredStyle:.Alert)
+                
                 let okAction = UIAlertAction(title: "Try Again", style: .Default, handler: nil)
                 alertView.addAction(okAction)
+                
                 self.presentViewController(alertView, animated: true, completion: nil)
                 return
             }

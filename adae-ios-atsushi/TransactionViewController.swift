@@ -110,7 +110,7 @@ class TransactionViewController: UITableViewController {
             cell.seller_name.text = String(self.jsonObject["user_og"][indexPath.item]["name"])
             
             cell.item_image.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["item_og"][indexPath.item]["photo_url"]) )
-                        
+            
             cell.avatar.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["user_og"][indexPath.item]["photo_url"]) )
             
             if (String(self.jsonObject["item_og"][indexPath.item]["user_id"]) == String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))) {
@@ -213,6 +213,23 @@ class TransactionViewController: UITableViewController {
             callback?(isOk: true)
         }
         return "returned"
+    }
+    
+    @IBAction func logOut(sender: AnyObject) {
+        
+        self.MyKeychainWrapper.mySetObject("", forKey:kSecValueData)
+        self.MyKeychainWrapper.mySetObject("", forKey:kSecAttrAccount)
+        
+        self.MyKeychainWrapper.writeToKeychain()
+        
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasLoggedIn")
+        
+        //let secondViewController:CompanionLoginViewController = CompanionLoginViewController()
+        //self.presentViewController(secondViewController, animated: true, completion: nil)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("login") 
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     @IBAction func transactionRefresh(sender: AnyObject) {
