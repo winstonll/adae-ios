@@ -110,6 +110,8 @@ class TransactionViewController: UITableViewController {
             cell.seller_name.text = String(self.jsonObject["user_og"][indexPath.item]["name"])
             
             cell.item_image.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["item_og"][indexPath.item]["photo_url"]) )
+                        
+            cell.avatar.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["user_og"][indexPath.item]["photo_url"]) )
             
             if (String(self.jsonObject["item_og"][indexPath.item]["user_id"]) == String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))) {
                 
@@ -142,6 +144,8 @@ class TransactionViewController: UITableViewController {
             cell.seller_name.text = String(self.jsonObject["user_co"][indexPath.item]["name"])
             
             cell.item_image.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["item_co"][indexPath.item]["photo_url"]) )
+            
+            cell.avatar.loadImageFromURLString( "https://adae.co" + String(self.jsonObject["user_co"][indexPath.item]["photo_url"]) )
             
             if (String(self.jsonObject["item_co"][indexPath.item]["user_id"]) == String(MyKeychainWrapper.myObjectForKey(kSecAttrAccount))) {
                 
