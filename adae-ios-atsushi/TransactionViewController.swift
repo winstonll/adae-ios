@@ -208,8 +208,6 @@ class TransactionViewController: UITableViewController {
 
             self.jsonObject = JSON(data: data!)
             
-            print(self.jsonObject)
-                        
             callback?(isOk: true)
         }
         return "returned"
@@ -223,9 +221,6 @@ class TransactionViewController: UITableViewController {
         self.MyKeychainWrapper.writeToKeychain()
         
         NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasLoggedIn")
-        
-        //let secondViewController:CompanionLoginViewController = CompanionLoginViewController()
-        //self.presentViewController(secondViewController, animated: true, completion: nil)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("login") 
