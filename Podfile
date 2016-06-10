@@ -7,3 +7,7 @@ pod 'SwiftyJSON', '~> 2.3.0'
 pod 'KFSwiftImageLoader', '~> 2.0'
 pod 'JSQMessagesViewController' 
 pod 'Socket.IO-Client-Swift'
+
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
+pod 'FBSDKShareKit'

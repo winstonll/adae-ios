@@ -9,6 +9,9 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import FBSDKCoreKit
+import FBSDKShareKit
+import FBSDKLoginKit
 
 class CompanionLoginViewController: UIViewController {
     
@@ -49,9 +52,9 @@ class CompanionLoginViewController: UIViewController {
         if (NSUserDefaults.standardUserDefaults().boolForKey("hasLoggedIn")) {
             self.performSegueWithIdentifier("successfulLogin", sender: nil)
 
-            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            //let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
-            //self.presentViewController(controller, animated: true, completion: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
+            self.presentViewController(controller, animated: true, completion: nil)
         }
         
     }
@@ -67,6 +70,52 @@ class CompanionLoginViewController: UIViewController {
     
     @IBAction func didTapTerms(sender: AnyObject) {
         UIApplication.sharedApplication().openURL(NSURL(string: "https://adae.co/terms")!)
+    }
+    
+    @IBAction func facebookLogin(sender: AnyObject) {
+        let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv"]
+        let urlString = "https://adae.co/api/v1/omniauth"
+        
+        Alamofire.request(.GET, urlString, headers: headers ).response { (req, res, data, error) -> Void in
+            
+            print("inside")
+            let json = JSON(data: data!)
+            print(json)
+            
+            /**
+            
+            if(res?.statusCode == 200) {
+                let json = JSON(data: data!)
+                
+                // save user authentication token in keychain
+                self.MyKeychainWrapper.mySetObject(String(json["auth_token"]), forKey:kSecValueData)
+                self.MyKeychainWrapper.mySetObject(String(json["id"]), forKey:kSecAttrAccount)
+                
+                self.MyKeychainWrapper.writeToKeychain()
+                
+                // save the fact that user has logged in so we don't need to show the login screen
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLoggedIn")
+                
+                self.performSegueWithIdentifier("successfulLogin", sender: nil)
+                
+                //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                //let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
+                //self.presentViewController(controller, animated: true, completion: nil)
+                
+            }else {
+                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasLoggedIn")
+                
+                let alertView = UIAlertController(title: "Login Problem",
+                    message: "Wrong username or password." as String, preferredStyle:.Alert)
+                
+                let okAction = UIAlertAction(title: "Try Again", style: .Default, handler: nil)
+                alertView.addAction(okAction)
+                
+                self.presentViewController(alertView, animated: true, completion: nil)
+                return
+            }**/
+        }
+
     }
     
     @IBAction func didLogin(sender: AnyObject) {
