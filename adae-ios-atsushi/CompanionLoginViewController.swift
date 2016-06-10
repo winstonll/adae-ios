@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+
 import FBSDKCoreKit
 import FBSDKShareKit
 import FBSDKLoginKit
@@ -72,50 +73,36 @@ class CompanionLoginViewController: UIViewController {
         UIApplication.sharedApplication().openURL(NSURL(string: "https://adae.co/terms")!)
     }
     
-    @IBAction func facebookLogin(sender: AnyObject) {
-        let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv"]
-        let urlString = "https://adae.co/api/v1/omniauth"
-        
-        Alamofire.request(.GET, urlString, headers: headers ).response { (req, res, data, error) -> Void in
-            
-            print("inside")
-            let json = JSON(data: data!)
-            print(json)
-            
-            /**
-            
-            if(res?.statusCode == 200) {
-                let json = JSON(data: data!)
-                
-                // save user authentication token in keychain
-                self.MyKeychainWrapper.mySetObject(String(json["auth_token"]), forKey:kSecValueData)
-                self.MyKeychainWrapper.mySetObject(String(json["id"]), forKey:kSecAttrAccount)
-                
-                self.MyKeychainWrapper.writeToKeychain()
-                
-                // save the fact that user has logged in so we don't need to show the login screen
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLoggedIn")
-                
-                self.performSegueWithIdentifier("successfulLogin", sender: nil)
-                
-                //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                //let controller = storyboard.instantiateViewControllerWithIdentifier("transaction_view") as! TransactionNavigationController
-                //self.presentViewController(controller, animated: true, completion: nil)
-                
-            }else {
-                NSUserDefaults.standardUserDefaults().setBool(false, forKey: "hasLoggedIn")
-                
-                let alertView = UIAlertController(title: "Login Problem",
-                    message: "Wrong username or password." as String, preferredStyle:.Alert)
-                
-                let okAction = UIAlertAction(title: "Try Again", style: .Default, handler: nil)
-                alertView.addAction(okAction)
-                
-                self.presentViewController(alertView, animated: true, completion: nil)
-                return
-            }**/
+    func getFBUserData(){
+        if((FBSDKAccessToken.currentAccessToken()) != nil){
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+                if (error == nil){
+                    //everything works print the user data
+                    print(result)
+                    
+                    /**let headers = ["ApiToken": "EHHyVTV44xhMfQXySDiv"]
+                     let urlString = "https://adae.co/api/v1/omniauth"
+                     
+                     Alamofire.request(.GET, urlString, headers: headers ).response { (req, res, data, error) -> Void in
+                     
+                     }**/
+                }
+            })
         }
-
+    }
+    
+    @IBAction func facebookLogin(sender: AnyObject) {
+        
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        fbLoginManager.logInWithReadPermissions(["email"], fromViewController: self) { (result, error) -> Void in
+            if (error == nil){
+                let fbloginresult : FBSDKLoginManagerLoginResult = result
+                if(fbloginresult.grantedPermissions.contains("email"))
+                {
+                    self.getFBUserData()
+                }
+            }
+        }
     }
     
     @IBAction func didLogin(sender: AnyObject) {
